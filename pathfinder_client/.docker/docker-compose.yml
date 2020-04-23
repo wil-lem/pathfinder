@@ -1,0 +1,57 @@
+version: '3'
+services:
+  pathfindc_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        build_env: ${BUILD_ENV}
+    image: ${PREFIX}
+    container_name: ${PREFIX}_app
+
+    links:
+      - ${PREFIX}_db:db
+    volumes:
+      - ../:/app
+      - ~/.ssh/id_rsa:/root/.ssh/id_rsa
+      - ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub
+      - ./config/php_php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./config/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./config/.inputrc:/root/.inputrc
+      - ./config/.bashrc:/root/.bashrc
+      - ./config/git-prompt.sh:/root/git-prompt.sh
+      - ./config/wp-config.php:/app/web/wp-config.php
+      - ./config/apache.conf:/etc/apache2/sites-enabled/000-default.conf
+    depends_on:
+      - ${PREFIX}_db
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DB}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASS}
+      MYSQL_DB_HOST: db
+      BUILD_ENV: ${BUILD_ENV}
+
+  pathfindc_db:
+    image: mysql:5.7
+    container_name: ${PREFIX}_db
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --default-storage-engine=INNODB --max-sp-recursion-depth=100 --max-allowed-packet=20M --thread-stack=512K --optimizer-search-depth=0 --sql-mode="NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
+    ports:
+      - ${DB_PORT}:3306
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DB}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASS}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ../db_data:/var/lib/mysql
+  pathfindc_pma:
+    image: corbinu/docker-phpmyadmin
+    container_name: ${PREFIX}_pma
+    links:
+      - ${PREFIX}_db:db
+    ports:
+      - ${PMA_PORT}:80
+    environment:
+      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PORT_3306_TCP_ADDR: db

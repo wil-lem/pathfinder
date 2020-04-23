@@ -1,0 +1,370 @@
+/* line 43, ../../../sass/style.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 47, ../../../sass/style.scss */
+.game-wrapper {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: #f2dfff;
+  font-family: Arial;
+}
+/* line 57, ../../../sass/style.scss */
+.game-wrapper .error-wrapper {
+  position: absolute;
+  z-index: 1000;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+}
+/* line 64, ../../../sass/style.scss */
+.game-wrapper .error-wrapper .message {
+  margin: 10px 10px 0px 10px;
+  background: lightgreen;
+  padding: 10px 40px 10px 10px;
+  border-radius: 6px;
+  border: green 1px solid;
+  position: relative;
+  cursor: pointer;
+}
+/* line 74, ../../../sass/style.scss */
+.game-wrapper .error-wrapper .message.error-message {
+  border-color: darkred;
+  background-color: lightcoral;
+}
+/* line 81, ../../../sass/style.scss */
+.game-wrapper .center-block {
+  display: inline-block;
+  padding: 30px;
+  background: white;
+  box-shadow: #ccc 2px 1px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* line 88, ../../../sass/style.scss */
+.game-wrapper .center-block input[type=text] {
+  width: 300px;
+  padding: 20px;
+  font-size: 25px;
+  margin-bottom: 20px;
+  border: grey 1px solid;
+}
+/* line 96, ../../../sass/style.scss */
+.game-wrapper .center-block div {
+  margin: 5px 0px;
+}
+/* line 100, ../../../sass/style.scss */
+.game-wrapper .center-block div.button {
+  width: 300px;
+  background: darkgreen;
+  color: white;
+  font-size: 25px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+}
+/* line 19, ../../../sass/style.scss */
+.game-wrapper .center-block div.button:hover {
+  background: green;
+}
+/* line 23, ../../../sass/style.scss */
+.game-wrapper .center-block div.button.disabled, .game-wrapper .center-block div.button.disabled:hover {
+  background-color: #999999 !important;
+  cursor: default !important;
+}
+/* line 28, ../../../sass/style.scss */
+.game-wrapper .center-block div.button .fa {
+  float: left;
+  margin-top: 2px;
+}
+/* line 106, ../../../sass/style.scss */
+.game-wrapper .center-block .copy-widget input {
+  width: calc( 100% - 60px);
+  font-size: 14px;
+  padding: 5px;
+}
+/* line 111, ../../../sass/style.scss */
+.game-wrapper .center-block .copy-widget .copy-button {
+  width: 50px;
+  margin-left: 5px;
+  color: blue;
+  float: right;
+  cursor: pointer;
+}
+/* line 121, ../../../sass/style.scss */
+.game-wrapper .center-block .card {
+  margin: auto;
+  float: none;
+}
+/* line 124, ../../../sass/style.scss */
+.game-wrapper .center-block .card:hover {
+  border-width: 1px;
+}
+/* line 130, ../../../sass/style.scss */
+.game-wrapper .play-area-wrapper {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  left: 0px;
+  height: 70vh;
+}
+/* line 138, ../../../sass/style.scss */
+.game-wrapper .play-area-wrapper .choose-first-card .choose-color, .game-wrapper .play-area-wrapper .choose-first-card .choose-number {
+  text-align: center;
+}
+/* line 141, ../../../sass/style.scss */
+.game-wrapper .play-area-wrapper .choose-first-card .choose-color .color-button, .game-wrapper .play-area-wrapper .choose-first-card .choose-color .number-button, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .color-button, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .number-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 4px;
+  text-align: center;
+  position: relative;
+}
+/* line 150, ../../../sass/style.scss */
+.game-wrapper .play-area-wrapper .choose-first-card .choose-color .color-button:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-color .number-button:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .color-button:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .number-button:before {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  top: -3px;
+  left: -3px;
+  border-radius: 50%;
+  content: '';
+  border: black 1px solid;
+  display: none;
+}
+/* line 163, ../../../sass/style.scss */
+.game-wrapper .play-area-wrapper .choose-first-card .choose-color .color-button:hover:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-color .color-button.selected:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-color .number-button:hover:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-color .number-button.selected:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .color-button:hover:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .color-button.selected:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .number-button:hover:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .number-button.selected:before {
+  display: block;
+}
+/* line 169, ../../../sass/style.scss */
+.game-wrapper .play-area-wrapper .choose-first-card .choose-color .number-button, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .number-button {
+  border: black 1px solid;
+  padding-top: 5px;
+}
+/* line 172, ../../../sass/style.scss */
+.game-wrapper .play-area-wrapper .choose-first-card .choose-color .number-button:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .number-button:before {
+  top: -4px;
+  left: -4px;
+}
+/* line 179, ../../../sass/style.scss */
+.game-wrapper .play-area-wrapper .choose-first-card .confirm-button {
+  width: 300px;
+  background: darkgreen;
+  color: white;
+  font-size: 25px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+}
+/* line 19, ../../../sass/style.scss */
+.game-wrapper .play-area-wrapper .choose-first-card .confirm-button:hover {
+  background: green;
+}
+/* line 23, ../../../sass/style.scss */
+.game-wrapper .play-area-wrapper .choose-first-card .confirm-button.disabled, .game-wrapper .play-area-wrapper .choose-first-card .confirm-button.disabled:hover {
+  background-color: #999999 !important;
+  cursor: default !important;
+}
+/* line 28, ../../../sass/style.scss */
+.game-wrapper .play-area-wrapper .choose-first-card .confirm-button .fa {
+  float: left;
+  margin-top: 2px;
+}
+/* line 189, ../../../sass/style.scss */
+.game-wrapper .play-area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+/* line 194, ../../../sass/style.scss */
+.game-wrapper .play-area .card {
+  position: absolute;
+}
+/* line 197, ../../../sass/style.scss */
+.game-wrapper .play-area .card.card-color-red {
+  left: 30px;
+}
+/* line 200, ../../../sass/style.scss */
+.game-wrapper .play-area .card.card-color-green {
+  left: 180px;
+}
+/* line 203, ../../../sass/style.scss */
+.game-wrapper .play-area .card.card-color-black {
+  left: 330px;
+}
+/* line 207, ../../../sass/style.scss */
+.game-wrapper .play-area .card.card-color-blue {
+  left: 480px;
+}
+/* line 210, ../../../sass/style.scss */
+.game-wrapper .play-area .card.card-color-orange {
+  left: 630px;
+}
+/* line 216, ../../../sass/style.scss */
+.game-wrapper .hand-area {
+  border-top: 1px solid #ccc;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  height: 30vh;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+/* line 226, ../../../sass/style.scss */
+.game-wrapper .hand-area .hand-buttons {
+  position: absolute;
+  bottom: 30vh;
+  width: 100%;
+  left: 0px;
+  padding: 0px 0px 5px 0px;
+  text-align: center;
+}
+/* line 234, ../../../sass/style.scss */
+.game-wrapper .hand-area .hand-buttons .button {
+  width: 300px;
+  background: darkgreen;
+  color: white;
+  font-size: 25px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  margin: 0px 5px;
+  width: 150px;
+  font-size: 22px;
+  padding: 9px;
+}
+/* line 19, ../../../sass/style.scss */
+.game-wrapper .hand-area .hand-buttons .button:hover {
+  background: green;
+}
+/* line 23, ../../../sass/style.scss */
+.game-wrapper .hand-area .hand-buttons .button.disabled, .game-wrapper .hand-area .hand-buttons .button.disabled:hover {
+  background-color: #999999 !important;
+  cursor: default !important;
+}
+/* line 28, ../../../sass/style.scss */
+.game-wrapper .hand-area .hand-buttons .button .fa {
+  float: left;
+  margin-top: 2px;
+}
+/* line 243, ../../../sass/style.scss */
+.game-wrapper .hand-area .hand-buttons .button.pass-button {
+  background: darkred;
+}
+/* line 245, ../../../sass/style.scss */
+.game-wrapper .hand-area .hand-buttons .button.pass-button:hover {
+  background: red;
+}
+/* line 253, ../../../sass/style.scss */
+.game-wrapper .card {
+  width: 90px;
+  height: 140px;
+  padding: 5px;
+  background: white;
+  border-radius: 10px;
+  border: black 1px solid;
+  float: left;
+  position: relative;
+  margin-right: -60px;
+}
+/* line 266, ../../../sass/style.scss */
+.game-wrapper .card.selected {
+  margin-top: -18px;
+}
+/* line 270, ../../../sass/style.scss */
+.game-wrapper .card:hover {
+  border-width: 2px;
+}
+/* line 274, ../../../sass/style.scss */
+.game-wrapper .card.card-color-red {
+  color: red;
+}
+/* line 277, ../../../sass/style.scss */
+.game-wrapper .card.card-color-green {
+  color: green;
+}
+/* line 280, ../../../sass/style.scss */
+.game-wrapper .card.card-color-blue {
+  color: blue;
+}
+/* line 283, ../../../sass/style.scss */
+.game-wrapper .card.card-color-orange {
+  color: orange;
+}
+/* line 287, ../../../sass/style.scss */
+.game-wrapper .card.stem {
+  transform: rotate(90deg);
+}
+/* line 291, ../../../sass/style.scss */
+.game-wrapper .card .card-number {
+  font-weight: bold;
+}
+/* line 296, ../../../sass/style.scss */
+.game-wrapper .card .card-number.bottom-right {
+  transform: rotate(180);
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+}
+/* line 306, ../../../sass/style.scss */
+.game-wrapper .player-wrapper {
+  border: #ccc 1px solid;
+  border-radius: 6px;
+  background: lightskyblue;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 6px;
+}
+/* line 314, ../../../sass/style.scss */
+.game-wrapper .player-wrapper h2 {
+  font-size: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+/* line 319, ../../../sass/style.scss */
+.game-wrapper .player-wrapper ul {
+  padding: 0px 6px;
+  margin: 0px;
+  list-style: none;
+}
+/* line 326, ../../../sass/style.scss */
+.game-wrapper .show-score .score-result {
+  width: 300px;
+}
+/* line 328, ../../../sass/style.scss */
+.game-wrapper .show-score .score-result .score-line {
+  justify-content: space-between;
+  display: flex;
+}
+/* line 332, ../../../sass/style.scss */
+.game-wrapper .show-score .score-result .score-line.header {
+  font-weight: bold;
+}
+/* line 335, ../../../sass/style.scss */
+.game-wrapper .show-score .score-result .score-line .player {
+  width: 60%;
+}
+/* line 337, ../../../sass/style.scss */
+.game-wrapper .show-score .score-result .score-line .player .icon {
+  float: left;
+  margin: 1px 5px 0px 5px;
+}
+/* line 342, ../../../sass/style.scss */
+.game-wrapper .show-score .score-result .score-line .score, .game-wrapper .show-score .score-result .score-line .total {
+  text-align: center;
+  width: 19%;
+}

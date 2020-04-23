@@ -1,0 +1,11 @@
+version: '3'
+services:
+  pathfindc_app:
+    ports:
+      - ${WEP_PORT}:80
+    volumes:
+      - ./config/php_xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ../xdebug_profiler:/app/xdebug_profiler
+    environment:
+      BASE_URL: ${BASE_DEV_URL}
+      DEBUG_ON: 1
