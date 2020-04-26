@@ -1,6 +1,6 @@
 const Express = require("express")();
 const Http = require("http").Server(Express);
-const Socketio = require("socket.io")(Http);
+const Socketio = require("socket.io")(Http,{ origins: '*:*'});
 
 var Person = require('./lib/Person');
 var Game = require('./lib/Game');

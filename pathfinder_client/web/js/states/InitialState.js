@@ -16,7 +16,7 @@ class InitialState extends BaseState {
         this.addToWrapper(this.center);
 
         super.createHTML();
-
+console.log(this);
         this.startGameButton.onclick = () => {
             var data = {
                 nickname: this.inputName.value

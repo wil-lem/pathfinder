@@ -1,21 +1,14 @@
 class Pathfinder {
-
-
     constructor() {
-        this.socket = io('http://localhost:3000');
+        this.socket = io('https://pathfinder.api.modusoft.nl');
 
         this.wrapper = document.createElement('div');
         this.wrapper.classList.add('game-wrapper');
         this.stateWrapper = Interactions.createDiv({class:'state-wrapper'});
         this.wrapper.appendChild(this.stateWrapper);
 
-
         this.message = new Messages(this);
         this.players = new Players(this);
-
-        // this.chat = new Chat(this,this.sidebar);
-
-
 
 
         this.state = new InitialState(this.stateWrapper,this);
