@@ -5,31 +5,100 @@
   transform: translate(-50%, -50%);
 }
 
+$shadow-color: rgba(100,100,100,.5);
+$buttonGreen: green;
+$buttonDarkGreen: darkgreen;
+$buttonBlue: blue;
+$buttonDarkBlue: darkblue;
+
+@mixin shadow {
+  box-shadow: $shadow-color 0px 5px 5px;
+}
+@mixin desktop-shadow {
+  box-shadow: rgba(100,100,100,.5) 7px 7px 5px;
+}
+
+@mixin noSelect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+
 @mixin button {
-  width: 300px;
-  background: darkgreen;
+  @include noSelect;
+  border-color: rgba(0,0,0,0.3);
+  border-style: solid;
+  border-width: 2px;
+  border-bottom-width: 4px;
+  padding: 1rem 1rem 1rem 3.2rem;
   color: white;
-  font-size: 25px;
+  text-decoration: none;
+
+  webkit-transition: color .1s ease-in-out,background-color .1s ease-in-out;
+  transition: color .1s ease-in-out,background-color .1s ease-in-out;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.0125), 0 1px 1px rgba(0,0,0,0.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.0125), 0 1px 1px rgba(0,0,0,0.05);
+  border-top-width: .0625rem;
+  border-bottom-width: calc(.2rem + .0625rem);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  background-color: $buttonGreen;
+  -webkit-transition: all .1s ease-in;
+  transition: all .1s ease-in;
   text-align: center;
-  padding: 10px;
-  cursor:pointer;
+  font-weight: bolder;
+  font-size: 1.8em;
   position: relative;
+  cursor: pointer;
 
 
-  &:hover {
-    background: green;
+  &:hover, &:focus {
+    background-color: $buttonDarkGreen
+  }
+  .fa, .fab {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    left: 0px;
+    background: rgba(0,0,0,.3);
+    margin: 0px;
+    padding: 0.8em .6em 0 .4em;
+    font-size: .9em;
+
   }
 
-  &.disabled, &.disabled:hover {
-    background-color: #999999 !important;
-    cursor: default !important;
+  &.button-blue {
+    background-color: $buttonBlue;
+    &:hover, &:focus {
+      background-color: $buttonDarkBlue;
+    }
   }
 
-  .fa {
-    float: left;
-    margin-top: 2px;
+  &.button-red {
+    background-color: red;
+    &:hover, &:focus {
+      background-color: darkred;
+    }
   }
 
+  &.button-yellow {
+    background-color: yellow;
+    &:hover, &:focus {
+      background-color: goldenrod;
+    }
+  }
+
+  &.button-small {
+    font-size: 1.2em;
+    padding: .7em 0 .6em 2.2rem;
+  }
 }
 
 @mixin deny-select {
@@ -45,13 +114,32 @@
 }
 
 .game-wrapper {
+
   position: fixed;
   top: 0px;
   bottom: 0px;
   left: 0px;
   right: 0px;
-  background: #f2dfff;
-  font-family: Arial;
+  z-index: 1;
+  background: white;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: url(../images/path.jpg) no-repeat;
+    background-size: cover;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+
+    opacity: .7;
+  }
+
+  font-family: Calibri, Arial, sans-serif;
 
 
   .error-wrapper {
@@ -78,15 +166,61 @@
     }
   }
 
+  .fieldset {
+    border: black 1px solid;
+    padding: .5rem;
+    position: relative;
+    h2 {
+      margin-top: -1.5rem;
+      font-size: 1.5em;
+      background: white;
+      margin: 0px;
+      padding: .2em;
+      display: inline-block;
+      position: absolute;
+      top: -1rem;
+    }
+
+  }
+
+  .player {
+    font-size: 1.2em;
+    position: relative;
+    padding-left: 1.2rem;
+    .fa {
+      position: absolute;
+      top: 2px;
+      left: 0px;
+      font-size: .8em;
+    }
+  }
+
+  .players-wrapper {
+    ul {
+      list-style: none;
+      padding: 0px;
+      margin: 1em .4em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      li {
+        width: 45%;
+
+      }
+
+    }
+  }
+
   .center-block {
     display: inline-block;
     padding: 30px;
     background: white;
     box-shadow: #ccc 2px 1px;
+    width: 100%;
+    @include shadow;
     @include valign;
 
     input[type=text] {
-      width: 300px;
       padding: 20px;
       font-size: 25px;
       margin-bottom: 20px;
@@ -97,23 +231,23 @@
       margin: 5px 0px;
     }
 
-    div.button {
+    div.button, a.button {
       @include button;
+      margin: .5em 0;
 
     }
 
     .copy-widget {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
       input {
-        width: calc( 100% - 60px);
-        font-size: 14px;
-        padding: 5px;
+        width: 100%;
+
       }
-      .copy-button {
-        width: 50px;
-        margin-left: 5px;
-        color: blue;
-        float: right;
-        cursor: pointer;
+      .button {
+        font-size: 1em;
+        width: 45%;
       }
     }
 

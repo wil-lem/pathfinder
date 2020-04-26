@@ -3,11 +3,28 @@ class Button {
         this.active = true;
         this.element = Interactions.createDiv({class:'button'});
         this.element.textContent = text;
-
-        console.log(text);
         wrapper.appendChild(this.element);
     }
-W
+
+    setWaShare(shareText) {
+        var text = this.element.textContent;
+
+        var parent = this.element.parentNode;
+
+        this.element.remove();
+
+        this.element = Interactions.createElement('a',{class: 'button'});
+        this.element.textContent = text;
+
+        this.element.setAttribute('href','whatsapp://send?text=' + encodeURIComponent(shareText));
+        this.element.setAttribute('data-action','hatsapp://send?text=' + encodeURIComponent(shareText));
+
+        this.adFabIcon('whatsapp');
+        parent.appendChild(this.element);
+
+        return this;
+    }
+
     disable() {
         this.addClass('disabled');
         this.active = false;
@@ -19,6 +36,7 @@ W
         this.active = true;
         return this;
     }
+
 
     addClass(className) {
         this.element.classList.add(className);
@@ -42,9 +60,17 @@ W
     adFaIcon(type) {
         var icon = Interactions.createDiv({class:'fa fa-'+type});
         this.element.append(icon);
+        return this;
+    }
+
+    adFabIcon(type) {
+        var icon = Interactions.createDiv({class:'fab fa-'+type});
+        this.element.append(icon);
+        return this;
     }
 
     setText(text) {
         this.element.textContent = text;
+        return this;
     }
 }

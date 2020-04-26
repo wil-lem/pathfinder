@@ -6,25 +6,26 @@ class InitialState extends BaseState {
 
         this.inputName.value = 'willem ' + Math.round(Math.random() * 100);
 
-        this.startGameButton = Interactions.createDiv({class:'button'});
         this.center = Interactions.createDiv({class:'center-block'});
-
-        this.startGameButton.textContent = 'Start game';
         this.center.appendChild(this.inputName);
-        this.center.appendChild(this.startGameButton);
+
+        this.startGameButton = new Button('Start game',this.center);
+        this.startGameButton.adFaIcon('hiking');
 
         this.addToWrapper(this.center);
 
+
+
         super.createHTML();
-console.log(this);
-        this.startGameButton.onclick = () => {
+
+        this.startGameButton.onClick(() => {
             var data = {
                 nickname: this.inputName.value
             };
 
             var valid = true;
             if(data.nickname.length < 4) {
-                this.errorMessage('Please enter a name of at least 4 characters.');
+                this.parent.getMessageHandler().errorMessage('Please enter a name of at least 4 characters.');
                 valid = false;
             }
 
@@ -36,7 +37,7 @@ console.log(this);
                     this.parent.startNewGame(data);
                 }
             }
-        };
+        });
 
     }
 

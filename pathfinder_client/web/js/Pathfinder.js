@@ -1,6 +1,20 @@
 class Pathfinder {
     constructor() {
-        this.socket = io('https://pathfinder.api.modusoft.nl');
+        var url = this.getBaseURL();
+        var parsed = this.parseURL(url);
+        var socketUrl = parsed.protocol + '//' + parsed.hostname + ':3000';
+        console.log(parsed);
+        console.log(socketUrl);
+
+        switch (parsed.hostname) {
+            case 'api.modusoft.nl':
+                socketUrl = 'https://pathfinder.api.modusoft.nl/'
+                break;
+            default:
+                break;
+        }
+        
+        this.socket = io(socketUrl);
 
         this.wrapper = document.createElement('div');
         this.wrapper.classList.add('game-wrapper');
@@ -25,7 +39,6 @@ class Pathfinder {
 
         this.socket.on('joinGame', data => {
             this.state = new InviteState(this.stateWrapper,this);
-            this.players.show();
             this.state.setData(data);
             this.state.createHTML();
         });

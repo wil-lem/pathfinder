@@ -2,21 +2,31 @@ const Express = require("express")();
 const Http = require("http").Server(Express);
 const Socketio = require("socket.io")(Http,{ origins: '*:*'});
 
+
+const dotenv = require('dotenv');
+dotenv.config();
+
 var Person = require('./lib/Person');
 var Game = require('./lib/Game');
 
-var position = {
-    x: 200,
-    y: 200
-};
-
 var persons = [];
 var games = [];
+var id = 1;
 
-Http.listen(3000, () => {
-    console.log("Listening at :3000...");
+Http.listen(process.env.LISTEN_PORT, () => {
+    console.log('Listening at ' + process.env.LISTEN_PORT);
 });
 
+var GlobalId = function() {
+    this.id = 1;
+};
+
+GlobalId.prototype.getNext = function() {
+    this.id++;
+    return this.id;
+}
+
+var globalId = new GlobalId();
 
 Socketio.on("connection", socket => {
 
@@ -64,10 +74,10 @@ Socketio.on("connection", socket => {
         }
 
         // First create a person
-        var person = new Person(data.nickname, socket);
+        var person = new Person(data.nickname, socket,globalId);
 
         // Create a new game
-        var game = new Game(person);
+        var game = new Game(person, globalId);
 
         games.push(game);
 
@@ -115,9 +125,7 @@ Socketio.on("connection", socket => {
             return;
         }
 
-
-
-        var person = new Person(data.nickname, socket);
+        var person = new Person(data.nickname, socket, globalId);
         game.addPlayer(person);
 
         person.emit('joinGame', {game: game.export(), person: person.export()});

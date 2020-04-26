@@ -19,15 +19,32 @@ class InviteState extends BaseState {
         this.center.appendChild(token);
 
         this.addCpu = new Button('Add CPU',this.center);
+        this.addCpu.addClass('buton-blue');
         this.addCpu.onClick(() => {
            this.addCpuPlayer();
         }).adFaIcon('microchip');
 
 
+        var playersWrapper = Interactions.createDiv({class: 'players-wrapper fieldset'});
+        Interactions.addHeader(playersWrapper,'Players');
+        this.playersUL = Interactions.createElement('ul',{class: 'player-list'});
+        playersWrapper.appendChild(this.playersUL);
+        this.parent.players.subscribe(this);
+
+        this.center.appendChild(playersWrapper);
 
         this.addToWrapper(this.center);
 
         super.createHTML();
+    }
+
+    updatePlayerList(list) {
+        this.playersUL.innerHTML = '';
+        list.forEach(player => {
+           var playerElement = Interactions.createElement('li',undefined,this.playersUL);
+           Interactions.createPlayer(player,playerElement);
+        });
+
     }
 
     addCpuPlayer() {
@@ -53,5 +70,11 @@ class InviteState extends BaseState {
 
         }
         this.gameStart.innerHTML = 'Wating for <em>' + data.creator + '</em> to start the game.';
+    }
+
+    remove() {
+        this.parent.players.unsubscribe(this);
+
+        super.remove();
     }
 }

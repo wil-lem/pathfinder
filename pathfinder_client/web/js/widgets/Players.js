@@ -1,16 +1,13 @@
 class Players {
-    constructor(parent) {
+    constructor(parent, socket) {
         this.parent = parent;
-        this.socket = this.parent.socket;
-        this.wrapper = Interactions.createDiv({class:'player-wrapper'});
-        this.parent.wrapper.appendChild(this.wrapper);
+        this.players = [];
+        if(socket === undefined) {
+            socket = this.parent.socket;
+        }
+        this.socket = socket;
 
-        this.wrapper.style.display = 'none';
-
-        Interactions.addHeader(this.wrapper,'Players', true, true);
-
-        this.playersList = Interactions.createElement('ul');
-        this.wrapper.appendChild(this.playersList);
+        this.subscribed = [];;
 
 
         this.socket.on('updatePlayerList', data => {
@@ -19,16 +16,29 @@ class Players {
     }
 
     updatePlayersList(list) {
-        this.playersList.innerHTML = '';
-        for(var i in list) {
-            var listItem = Interactions.createElement('li');
-            listItem.textContent = list[i];
-            this.playersList.appendChild(listItem);
-        }
+        this.players = list;
 
+        this.subscribed.forEach(subscriber => {
+            if (subscriber.updatePlayerList !== undefined) {
+                subscriber.updatePlayerList(list);
+            }
+        });
     }
 
-    show() {
-        this.wrapper.style.display = 'block';
+    subscribe(subscriber) {
+        if(this.subscribed.indexOf(subscriber) < 0) {
+            this.subscribed.push(subscriber);
+
+            if (subscriber.updatePlayerList !== undefined) {
+                subscriber.updatePlayerList(this.players);
+            }
+        }
+    }
+
+    unsubscribe(subscriber) {
+        var index = this.subscribed.indexOf(subscriber);
+        if(index >= 0) {
+            this.subscribed.splice(index,1);
+        }
     }
 }

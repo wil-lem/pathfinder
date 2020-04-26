@@ -1,7 +1,28 @@
 class Interactions {
 
-    static createDiv(attrs) {
-        return Interactions.createElement('div', attrs);
+    /**
+     * Create a div element
+     *
+     * @param {} attrs List of attributes that will be added
+     * @param {HTMLElement} wrapper
+     * @returns {HTMLElement}
+     */
+    static createDiv(attrs, wrapper) {
+        return Interactions.createElement('div', attrs, wrapper);
+    }
+
+    /**
+     * Create a player <div>
+     *
+     * @param {} playerData
+     * @param {HTMLElement} wrapper optional
+     * @returns {HTMLElement} Created div
+     */
+    static createPlayer(playerData, wrapper) {
+        var player = Interactions.createDiv({class:'player'}, wrapper);
+        player.textContent = playerData.name;
+        player.appendChild(Interactions.createDiv({class:'icon fa fa-user'}));
+        return player;
     }
 
     static createInput(attrs) {
@@ -16,12 +37,22 @@ class Interactions {
         return Interactions.createInput(attrs);
     }
 
-    static createElement(type,attrs) {
+    /**
+     * Create a basic html element
+     * @param string type Element type to create
+     * @param {} attrs List of attributes to add to the element
+     * @param {HTMLElement} wrapper
+     * @returns {HTMLElement}
+     */
+    static createElement(type,attrs,wrapper) {
         var element = document.createElement(type);
         if(attrs !== undefined) {
             for(var i in attrs) {
                 element.setAttribute(i, attrs[i]);
             }
+        }
+        if(wrapper !== undefined) {
+            wrapper.appendChild(element);
         }
         return element;
     }
@@ -32,21 +63,29 @@ class Interactions {
         var input = Interactions.createInputText();
         input.readOnly = true;
         input.value = text;
-
-        var copy = Interactions.createDiv({class:'copy-button fa fa-copy'});
-
         element.appendChild(input);
-        element.appendChild(copy);
 
-        copy.onclick = () => {
-          input.select();
-          input.setSelectionRange(0,99999);
-          document.execCommand('copy');
-          document.getSelection().removeAllRanges();
-          if(messageHandler !== undefined) {
-              messageHandler.addMessage('Copied',1000);
-          }
-        };
+        var copy = new Button('Copy',element);
+        copy.adFaIcon('copy').addClass('button-blue').addClass('button-small');
+
+        copy.onClick(() => {
+            input.select();
+            input.setSelectionRange(0,99999);
+            document.execCommand('copy');
+            document.getSelection().removeAllRanges();
+            if(messageHandler !== undefined) {
+                messageHandler.addMessage('Copied',1000);
+            }
+        });
+
+
+
+        var whatsapp = new Button('Whatsapp',element);
+        whatsapp.setWaShare(text).addClass('button-blue').addClass('button-small');
+
+
+        var whatsApp = Interactions.createElement('a',{class:'whatsapp-button fa fa-whatsapp'});
+
 
         return element;
     }
@@ -54,7 +93,7 @@ class Interactions {
     static addHeader(element,text, closable, movable) {
         var headerElement = Interactions.createElement('h2');
 
-        element.textContent = text;
+        headerElement.textContent = text;
         element.appendChild(headerElement);
 
         if(closable) {

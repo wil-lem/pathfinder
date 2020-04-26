@@ -54,10 +54,7 @@ class ScoreModal {
         var line = Interactions.createDiv({class:'score-line'});
         this.scoreWrapper.append(line);
 
-        var player = Interactions.createDiv({class:'player'});
-        player.textContent = scoreData.player;
-
-        player.appendChild(Interactions.createDiv({class:'icon fa fa-user'}));
+        var player = Interactions.createPlayer(scoreData.player);
 
         line.append(player);
 
