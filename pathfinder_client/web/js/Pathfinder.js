@@ -7,7 +7,7 @@ class Pathfinder {
         console.log(socketUrl);
 
         switch (parsed.hostname) {
-            case 'api.modusoft.nl':
+            case 'pathfinder.modusoft.nl':
                 socketUrl = 'https://pathfinder.api.modusoft.nl/'
                 break;
             default:
