@@ -1,44 +1,13 @@
-/* line 112, ../../../sass/style.scss */
-* {
-  box-sizing: border-box;
-}
-
-/* line 116, ../../../sass/style.scss */
-.game-wrapper {
-  position: fixed;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  z-index: 1;
-  background: white;
-  font-family: Calibri, Arial, sans-serif;
-}
-/* line 126, ../../../sass/style.scss */
-.game-wrapper:before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  background: url(../images/path.jpg) no-repeat;
-  background-size: cover;
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-  opacity: .7;
-}
-/* line 145, ../../../sass/style.scss */
-.game-wrapper .error-wrapper {
+/* line 1, ../../../sass/includes/_elements.scss */
+.error-wrapper {
   position: absolute;
   z-index: 1000;
   top: 0px;
   left: 0px;
   width: 100%;
 }
-/* line 152, ../../../sass/style.scss */
-.game-wrapper .error-wrapper .message {
+/* line 8, ../../../sass/includes/_elements.scss */
+.error-wrapper .message {
   margin: 10px 10px 0px 10px;
   background: lightgreen;
   padding: 10px 40px 10px 10px;
@@ -47,19 +16,21 @@
   position: relative;
   cursor: pointer;
 }
-/* line 162, ../../../sass/style.scss */
-.game-wrapper .error-wrapper .message.error-message {
+/* line 18, ../../../sass/includes/_elements.scss */
+.error-wrapper .message.error-message {
   border-color: darkred;
   background-color: lightcoral;
 }
-/* line 169, ../../../sass/style.scss */
-.game-wrapper .fieldset {
+
+/* line 25, ../../../sass/includes/_elements.scss */
+.fieldset {
   border: black 1px solid;
   padding: .5rem;
   position: relative;
+  margin-top: 1rem;
 }
-/* line 173, ../../../sass/style.scss */
-.game-wrapper .fieldset h2 {
+/* line 30, ../../../sass/includes/_elements.scss */
+.fieldset h2 {
   margin-top: -1.5rem;
   font-size: 1.5em;
   background: white;
@@ -69,58 +40,36 @@
   position: absolute;
   top: -1rem;
 }
-/* line 186, ../../../sass/style.scss */
-.game-wrapper .player {
-  font-size: 1.2em;
-  position: relative;
-  padding-left: 1.2rem;
-}
-/* line 190, ../../../sass/style.scss */
-.game-wrapper .player .fa {
-  position: absolute;
-  top: 2px;
-  left: 0px;
-  font-size: .8em;
-}
-/* line 199, ../../../sass/style.scss */
-.game-wrapper .players-wrapper ul {
-  list-style: none;
-  padding: 0px;
-  margin: 1em .4em;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-/* line 206, ../../../sass/style.scss */
-.game-wrapper .players-wrapper ul li {
-  width: 45%;
-}
-/* line 214, ../../../sass/style.scss */
-.game-wrapper .center-block {
-  display: inline-block;
-  padding: 30px;
-  background: white;
-  box-shadow: #ccc 2px 1px;
+
+/* line 42, ../../../sass/includes/_elements.scss */
+.center-block-wrapper {
+  padding: 0px 1rem;
   width: 100%;
-  box-shadow: rgba(100, 100, 100, 0.5) 0px 5px 5px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 1000;
 }
-/* line 223, ../../../sass/style.scss */
-.game-wrapper .center-block input[type=text] {
-  padding: 20px;
-  font-size: 25px;
-  margin-bottom: 20px;
+/* line 47, ../../../sass/includes/_elements.scss */
+.center-block-wrapper .center-block {
+  display: block;
+  padding: 1rem;
+  margin: 0px auto;
+  max-width: 400px;
+  background: white;
+  box-shadow: rgba(100, 100, 100, 0.5) 7px 7px 5px;
+}
+/* line 58, ../../../sass/includes/_elements.scss */
+.center-block-wrapper input[type=text] {
+  padding: .5em;
+  font-size: 1.5em;
+  width: 100%;
+  margin: .5em 0;
   border: grey 1px solid;
 }
-/* line 230, ../../../sass/style.scss */
-.game-wrapper .center-block div {
-  margin: 5px 0px;
-}
-/* line 234, ../../../sass/style.scss */
-.game-wrapper .center-block div.button, .game-wrapper .center-block a.button {
+/* line 66, ../../../sass/includes/_elements.scss */
+.center-block-wrapper div.button, .center-block-wrapper a.button {
   -webkit-touch-callout: none;
   /* iOS Safari */
   -webkit-user-select: none;
@@ -160,12 +109,12 @@
   cursor: pointer;
   margin: .5em 0;
 }
-/* line 62, ../../../sass/style.scss */
-.game-wrapper .center-block div.button:hover, .game-wrapper .center-block div.button:focus, .game-wrapper .center-block a.button:hover, .game-wrapper .center-block a.button:focus {
+/* line 54, ../../../sass/includes/_mixins.scss */
+.center-block-wrapper div.button:hover, .center-block-wrapper div.button:focus, .center-block-wrapper a.button:hover, .center-block-wrapper a.button:focus {
   background-color: darkgreen;
 }
-/* line 65, ../../../sass/style.scss */
-.game-wrapper .center-block div.button .fa, .game-wrapper .center-block div.button .fab, .game-wrapper .center-block a.button .fa, .game-wrapper .center-block a.button .fab {
+/* line 57, ../../../sass/includes/_mixins.scss */
+.center-block-wrapper div.button .fa, .center-block-wrapper div.button .fab, .center-block-wrapper a.button .fa, .center-block-wrapper a.button .fab {
   position: absolute;
   top: 0px;
   height: 100%;
@@ -175,72 +124,383 @@
   padding: 0.8em .6em 0 .4em;
   font-size: .9em;
 }
-/* line 77, ../../../sass/style.scss */
-.game-wrapper .center-block div.button.button-blue, .game-wrapper .center-block a.button.button-blue {
+/* line 69, ../../../sass/includes/_mixins.scss */
+.center-block-wrapper div.button.button-blue, .center-block-wrapper a.button.button-blue {
   background-color: blue;
 }
-/* line 79, ../../../sass/style.scss */
-.game-wrapper .center-block div.button.button-blue:hover, .game-wrapper .center-block div.button.button-blue:focus, .game-wrapper .center-block a.button.button-blue:hover, .game-wrapper .center-block a.button.button-blue:focus {
+/* line 71, ../../../sass/includes/_mixins.scss */
+.center-block-wrapper div.button.button-blue:hover, .center-block-wrapper div.button.button-blue:focus, .center-block-wrapper a.button.button-blue:hover, .center-block-wrapper a.button.button-blue:focus {
   background-color: darkblue;
 }
-/* line 84, ../../../sass/style.scss */
-.game-wrapper .center-block div.button.button-red, .game-wrapper .center-block a.button.button-red {
+/* line 76, ../../../sass/includes/_mixins.scss */
+.center-block-wrapper div.button.button-red, .center-block-wrapper a.button.button-red {
   background-color: red;
 }
-/* line 86, ../../../sass/style.scss */
-.game-wrapper .center-block div.button.button-red:hover, .game-wrapper .center-block div.button.button-red:focus, .game-wrapper .center-block a.button.button-red:hover, .game-wrapper .center-block a.button.button-red:focus {
+/* line 78, ../../../sass/includes/_mixins.scss */
+.center-block-wrapper div.button.button-red:hover, .center-block-wrapper div.button.button-red:focus, .center-block-wrapper a.button.button-red:hover, .center-block-wrapper a.button.button-red:focus {
   background-color: darkred;
 }
-/* line 91, ../../../sass/style.scss */
-.game-wrapper .center-block div.button.button-yellow, .game-wrapper .center-block a.button.button-yellow {
+/* line 83, ../../../sass/includes/_mixins.scss */
+.center-block-wrapper div.button.button-yellow, .center-block-wrapper a.button.button-yellow {
   background-color: yellow;
 }
-/* line 93, ../../../sass/style.scss */
-.game-wrapper .center-block div.button.button-yellow:hover, .game-wrapper .center-block div.button.button-yellow:focus, .game-wrapper .center-block a.button.button-yellow:hover, .game-wrapper .center-block a.button.button-yellow:focus {
+/* line 85, ../../../sass/includes/_mixins.scss */
+.center-block-wrapper div.button.button-yellow:hover, .center-block-wrapper div.button.button-yellow:focus, .center-block-wrapper a.button.button-yellow:hover, .center-block-wrapper a.button.button-yellow:focus {
   background-color: goldenrod;
 }
-/* line 98, ../../../sass/style.scss */
-.game-wrapper .center-block div.button.button-small, .game-wrapper .center-block a.button.button-small {
+/* line 90, ../../../sass/includes/_mixins.scss */
+.center-block-wrapper div.button.button-small, .center-block-wrapper a.button.button-small {
   font-size: 1.2em;
   padding: .7em 0 .6em 2.2rem;
 }
-/* line 240, ../../../sass/style.scss */
-.game-wrapper .center-block .copy-widget {
+/* line 95, ../../../sass/includes/_mixins.scss */
+.center-block-wrapper div.button.disabled, .center-block-wrapper a.button.disabled {
+  cursor: default;
+  background: #cccccc;
+}
+/* line 72, ../../../sass/includes/_elements.scss */
+.center-block-wrapper .copy-widget {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-/* line 244, ../../../sass/style.scss */
-.game-wrapper .center-block .copy-widget input {
+/* line 76, ../../../sass/includes/_elements.scss */
+.center-block-wrapper .copy-widget input {
   width: 100%;
 }
-/* line 248, ../../../sass/style.scss */
-.game-wrapper .center-block .copy-widget .button {
+/* line 80, ../../../sass/includes/_elements.scss */
+.center-block-wrapper .copy-widget .button {
   font-size: 1em;
   width: 45%;
 }
-/* line 255, ../../../sass/style.scss */
-.game-wrapper .center-block .card {
+/* line 87, ../../../sass/includes/_elements.scss */
+.center-block-wrapper .card {
   margin: auto;
   float: none;
 }
-/* line 258, ../../../sass/style.scss */
-.game-wrapper .center-block .card:hover {
+/* line 90, ../../../sass/includes/_elements.scss */
+.center-block-wrapper .card:hover {
   border-width: 1px;
 }
-/* line 264, ../../../sass/style.scss */
+/* line 96, ../../../sass/includes/_elements.scss */
+.center-block-wrapper.notify-first-card .card {
+  margin: 1em auto;
+  display: block;
+  float: none;
+}
+@media (orientation: landscape) {
+  /* line 106, ../../../sass/includes/_elements.scss */
+  .center-block-wrapper .two-cols.center-block {
+    max-width: 600px;
+    display: flex;
+    justify-content: space-between;
+  }
+  /* line 110, ../../../sass/includes/_elements.scss */
+  .center-block-wrapper .two-cols.center-block .center-block-left, .center-block-wrapper .two-cols.center-block .center-block-right {
+    width: 48%;
+  }
+  /* line 113, ../../../sass/includes/_elements.scss */
+  .center-block-wrapper .two-cols.center-block .center-block-left .copy-widget .button, .center-block-wrapper .two-cols.center-block .center-block-right .copy-widget .button {
+    overflow: hidden;
+    height: 3rem;
+    text-indent: -999px;
+    height: 3rem;
+  }
+  /* line 113, ../../../sass/includes/_mixins.scss */
+  .center-block-wrapper .two-cols.center-block .center-block-left .copy-widget .button .fa, .center-block-wrapper .two-cols.center-block .center-block-left .copy-widget .button .fab, .center-block-wrapper .two-cols.center-block .center-block-right .copy-widget .button .fa, .center-block-wrapper .two-cols.center-block .center-block-right .copy-widget .button .fab {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    text-indent: 0px;
+    font-size: 1.5em;
+    top: 7px;
+    background: none;
+  }
+}
+
+/* line 122, ../../../sass/includes/_elements.scss */
+.game-players-wrapper {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 10;
+}
+/* line 128, ../../../sass/includes/_elements.scss */
+.game-players-wrapper .game-players {
+  background: rgba(100, 100, 100, 0.5);
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.7) 7px 0px 5px;
+}
+/* line 133, ../../../sass/includes/_elements.scss */
+.game-players-wrapper .game-players .fa-users {
+  position: absolute;
+  bottom: -50px;
+  right: 1rem;
+  margin: 0px .5em 0px 0px;
+  background: rgba(100, 100, 100, 0.5);
+  border: black 1px solid;
+  padding: .5em;
+  font-size: 1.5em;
+  cursor: pointer;
+  border-top: 0px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+/* line 148, ../../../sass/includes/_elements.scss */
+.game-players-wrapper .game-players .player-list {
+  height: 0px;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  width: 100%;
+  list-style: none;
+  justify-content: space-between;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+/* line 159, ../../../sass/includes/_elements.scss */
+.game-players-wrapper .game-players .player-list li {
+  padding: .3rem;
+  min-width: 30%;
+}
+/* line 164, ../../../sass/includes/_elements.scss */
+.game-players-wrapper .game-players .player-list li .game-turn .icon {
+  color: green;
+}
+/* line 168, ../../../sass/includes/_elements.scss */
+.game-players-wrapper .game-players .player-list li .round-turn {
+  color: green;
+}
+/* line 175, ../../../sass/includes/_elements.scss */
+.game-players-wrapper .game-players.open .player-list {
+  height: auto;
+}
+
+/* line 3, ../../../sass/includes/_hand.scss */
+.hand-area {
+  z-index: 7;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  height: 8rem;
+  padding: 0px;
+  overflow-x: scroll;
+}
+/* line 13, ../../../sass/includes/_hand.scss */
+.hand-area .card-slider {
+  position: relative;
+  padding: 0px 20px 0px;
+  overflow-y: hidden;
+  height: 100%;
+}
+/* line 14, ../../../sass/includes/_hand.scss */
+.hand-area .card-slider .end-spacer {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 250px;
+  height: 50px;
+}
+/* line 26, ../../../sass/includes/_hand.scss */
+.hand-area .card-slider .card {
+  position: absolute;
+  top: 30px;
+}
+
+/* line 35, ../../../sass/includes/_hand.scss */
+.hand-buttons {
+  width: 0px;
+  height: 0px;
+}
+/* line 44, ../../../sass/includes/_hand.scss */
+.hand-buttons .button {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+               supported by Chrome, Opera and Firefox */
+  border-color: rgba(0, 0, 0, 0.3);
+  border-style: solid;
+  border-width: 2px;
+  border-bottom-width: 4px;
+  padding: 1rem 1rem 1rem 3.2rem;
+  color: white;
+  text-decoration: none;
+  webkit-transition: color .1s ease-in-out,background-color .1s ease-in-out;
+  transition: color .1s ease-in-out,background-color .1s ease-in-out;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.0125), 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.0125), 0 1px 1px rgba(0, 0, 0, 0.05);
+  border-top-width: .0625rem;
+  border-bottom-width: calc(.2rem + .0625rem);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: green;
+  -webkit-transition: all .1s ease-in;
+  transition: all .1s ease-in;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.8em;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0px;
+  width: 150px;
+  font-size: 1.5em;
+  position: fixed;
+  right: .5rem;
+  bottom: 5rem;
+  z-index: 8;
+  padding: .6rem .6rem .6rem 3.2rem;
+}
+/* line 54, ../../../sass/includes/_mixins.scss */
+.hand-buttons .button:hover, .hand-buttons .button:focus {
+  background-color: darkgreen;
+}
+/* line 57, ../../../sass/includes/_mixins.scss */
+.hand-buttons .button .fa, .hand-buttons .button .fab {
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.3);
+  margin: 0px;
+  padding: 0.8em .6em 0 .4em;
+  font-size: .9em;
+}
+/* line 69, ../../../sass/includes/_mixins.scss */
+.hand-buttons .button.button-blue {
+  background-color: blue;
+}
+/* line 71, ../../../sass/includes/_mixins.scss */
+.hand-buttons .button.button-blue:hover, .hand-buttons .button.button-blue:focus {
+  background-color: darkblue;
+}
+/* line 76, ../../../sass/includes/_mixins.scss */
+.hand-buttons .button.button-red {
+  background-color: red;
+}
+/* line 78, ../../../sass/includes/_mixins.scss */
+.hand-buttons .button.button-red:hover, .hand-buttons .button.button-red:focus {
+  background-color: darkred;
+}
+/* line 83, ../../../sass/includes/_mixins.scss */
+.hand-buttons .button.button-yellow {
+  background-color: yellow;
+}
+/* line 85, ../../../sass/includes/_mixins.scss */
+.hand-buttons .button.button-yellow:hover, .hand-buttons .button.button-yellow:focus {
+  background-color: goldenrod;
+}
+/* line 90, ../../../sass/includes/_mixins.scss */
+.hand-buttons .button.button-small {
+  font-size: 1.2em;
+  padding: .7em 0 .6em 2.2rem;
+}
+/* line 95, ../../../sass/includes/_mixins.scss */
+.hand-buttons .button.disabled {
+  cursor: default;
+  background: #cccccc;
+}
+/* line 57, ../../../sass/includes/_hand.scss */
+.hand-buttons .button .fa {
+  font-size: 1em;
+  padding-top: .4em;
+}
+/* line 62, ../../../sass/includes/_hand.scss */
+.hand-buttons .button.pass-button {
+  left: auto;
+  right: .5rem;
+  bottom: .2em;
+  background: darkred;
+}
+/* line 68, ../../../sass/includes/_hand.scss */
+.hand-buttons .button.pass-button:hover {
+  background: red;
+}
+
+/* line 6, ../../../sass/style.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 12, ../../../sass/style.scss */
+.game-wrapper {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+  background: white;
+  font-family: Calibri, Arial, sans-serif;
+}
+/* line 21, ../../../sass/style.scss */
+.game-wrapper:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: url(../images/path.jpg) no-repeat;
+  background-size: cover;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  opacity: .7;
+}
+/* line 44, ../../../sass/style.scss */
+.game-wrapper .player {
+  font-size: 1.2em;
+  position: relative;
+  padding-left: 1.2rem;
+}
+/* line 48, ../../../sass/style.scss */
+.game-wrapper .player .fa {
+  position: absolute;
+  top: 2px;
+  left: 0px;
+  font-size: .8em;
+}
+/* line 57, ../../../sass/style.scss */
+.game-wrapper .players-wrapper ul {
+  list-style: none;
+  padding: 0px;
+  margin: 1em .4em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+/* line 64, ../../../sass/style.scss */
+.game-wrapper .players-wrapper ul li {
+  width: 45%;
+}
+/* line 74, ../../../sass/style.scss */
 .game-wrapper .play-area-wrapper {
   position: absolute;
   right: 0px;
   top: 0px;
   left: 0px;
-  height: 70vh;
+  height: 80vh;
+  z-index: 5;
 }
-/* line 272, ../../../sass/style.scss */
+/* line 84, ../../../sass/style.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .choose-color, .game-wrapper .play-area-wrapper .choose-first-card .choose-number {
   text-align: center;
 }
-/* line 275, ../../../sass/style.scss */
+/* line 87, ../../../sass/style.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .choose-color .color-button, .game-wrapper .play-area-wrapper .choose-first-card .choose-color .number-button, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .color-button, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .number-button {
   width: 30px;
   height: 30px;
@@ -250,7 +510,7 @@
   text-align: center;
   position: relative;
 }
-/* line 284, ../../../sass/style.scss */
+/* line 96, ../../../sass/style.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .choose-color .color-button:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-color .number-button:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .color-button:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .number-button:before {
   position: absolute;
   width: 34px;
@@ -262,21 +522,21 @@
   border: black 1px solid;
   display: none;
 }
-/* line 297, ../../../sass/style.scss */
+/* line 109, ../../../sass/style.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .choose-color .color-button:hover:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-color .color-button.selected:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-color .number-button:hover:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-color .number-button.selected:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .color-button:hover:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .color-button.selected:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .number-button:hover:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .number-button.selected:before {
   display: block;
 }
-/* line 303, ../../../sass/style.scss */
+/* line 115, ../../../sass/style.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .choose-color .number-button, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .number-button {
   border: black 1px solid;
   padding-top: 5px;
 }
-/* line 306, ../../../sass/style.scss */
+/* line 118, ../../../sass/style.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .choose-color .number-button:before, .game-wrapper .play-area-wrapper .choose-first-card .choose-number .number-button:before {
   top: -4px;
   left: -4px;
 }
-/* line 313, ../../../sass/style.scss */
+/* line 125, ../../../sass/style.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .confirm-button {
   -webkit-touch-callout: none;
   /* iOS Safari */
@@ -316,11 +576,11 @@
   position: relative;
   cursor: pointer;
 }
-/* line 62, ../../../sass/style.scss */
+/* line 54, ../../../sass/includes/_mixins.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .confirm-button:hover, .game-wrapper .play-area-wrapper .choose-first-card .confirm-button:focus {
   background-color: darkgreen;
 }
-/* line 65, ../../../sass/style.scss */
+/* line 57, ../../../sass/includes/_mixins.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .confirm-button .fa, .game-wrapper .play-area-wrapper .choose-first-card .confirm-button .fab {
   position: absolute;
   top: 0px;
@@ -331,183 +591,112 @@
   padding: 0.8em .6em 0 .4em;
   font-size: .9em;
 }
-/* line 77, ../../../sass/style.scss */
+/* line 69, ../../../sass/includes/_mixins.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .confirm-button.button-blue {
   background-color: blue;
 }
-/* line 79, ../../../sass/style.scss */
+/* line 71, ../../../sass/includes/_mixins.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .confirm-button.button-blue:hover, .game-wrapper .play-area-wrapper .choose-first-card .confirm-button.button-blue:focus {
   background-color: darkblue;
 }
-/* line 84, ../../../sass/style.scss */
+/* line 76, ../../../sass/includes/_mixins.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .confirm-button.button-red {
   background-color: red;
 }
-/* line 86, ../../../sass/style.scss */
+/* line 78, ../../../sass/includes/_mixins.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .confirm-button.button-red:hover, .game-wrapper .play-area-wrapper .choose-first-card .confirm-button.button-red:focus {
   background-color: darkred;
 }
-/* line 91, ../../../sass/style.scss */
+/* line 83, ../../../sass/includes/_mixins.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .confirm-button.button-yellow {
   background-color: yellow;
 }
-/* line 93, ../../../sass/style.scss */
+/* line 85, ../../../sass/includes/_mixins.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .confirm-button.button-yellow:hover, .game-wrapper .play-area-wrapper .choose-first-card .confirm-button.button-yellow:focus {
   background-color: goldenrod;
 }
-/* line 98, ../../../sass/style.scss */
+/* line 90, ../../../sass/includes/_mixins.scss */
 .game-wrapper .play-area-wrapper .choose-first-card .confirm-button.button-small {
   font-size: 1.2em;
   padding: .7em 0 .6em 2.2rem;
 }
-/* line 323, ../../../sass/style.scss */
+/* line 95, ../../../sass/includes/_mixins.scss */
+.game-wrapper .play-area-wrapper .choose-first-card .confirm-button.disabled {
+  cursor: default;
+  background: #cccccc;
+}
+/* line 129, ../../../sass/style.scss */
+.game-wrapper .play-area-wrapper .choose-first-card .card {
+  float: none;
+  margin: .5em auto;
+}
+@media (orientation: landscape) {
+  /* line 135, ../../../sass/style.scss */
+  .game-wrapper .play-area-wrapper .choose-first-card .center-block-left {
+    width: 80%;
+  }
+  /* line 138, ../../../sass/style.scss */
+  .game-wrapper .play-area-wrapper .choose-first-card .center-block-right {
+    width: 18%;
+    position: relative;
+  }
+  /* line 141, ../../../sass/style.scss */
+  .game-wrapper .play-area-wrapper .choose-first-card .center-block-right .card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+/* line 150, ../../../sass/style.scss */
 .game-wrapper .play-area {
+  z-index: 6;
   position: relative;
   width: 100%;
   height: 100%;
 }
-/* line 328, ../../../sass/style.scss */
+/* line 156, ../../../sass/style.scss */
 .game-wrapper .play-area .card {
   position: absolute;
+  box-shadow: rgba(100, 100, 100, 0.8) 3px 3px 2px;
 }
-/* line 331, ../../../sass/style.scss */
+/* line 160, ../../../sass/style.scss */
 .game-wrapper .play-area .card.card-color-red {
   left: 30px;
 }
-/* line 334, ../../../sass/style.scss */
+/* line 163, ../../../sass/style.scss */
 .game-wrapper .play-area .card.card-color-green {
   left: 180px;
 }
-/* line 337, ../../../sass/style.scss */
+/* line 166, ../../../sass/style.scss */
 .game-wrapper .play-area .card.card-color-black {
   left: 330px;
 }
-/* line 341, ../../../sass/style.scss */
+/* line 170, ../../../sass/style.scss */
 .game-wrapper .play-area .card.card-color-blue {
   left: 480px;
 }
-/* line 344, ../../../sass/style.scss */
+/* line 173, ../../../sass/style.scss */
 .game-wrapper .play-area .card.card-color-orange {
   left: 630px;
 }
-/* line 350, ../../../sass/style.scss */
-.game-wrapper .hand-area {
-  border-top: 1px solid #ccc;
+/* line 178, ../../../sass/style.scss */
+.game-wrapper .play-area .card.small .card-number {
   position: absolute;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  height: 30vh;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
 }
-/* line 360, ../../../sass/style.scss */
-.game-wrapper .hand-area .hand-buttons {
-  position: absolute;
-  bottom: 30vh;
-  width: 100%;
-  left: 0px;
-  padding: 0px 0px 5px 0px;
-  text-align: center;
+/* line 182, ../../../sass/style.scss */
+.game-wrapper .play-area .card.small .bottom-right {
+  display: none;
 }
-/* line 368, ../../../sass/style.scss */
-.game-wrapper .hand-area .hand-buttons .button {
-  -webkit-touch-callout: none;
-  /* iOS Safari */
-  -webkit-user-select: none;
-  /* Safari */
-  -khtml-user-select: none;
-  /* Konqueror HTML */
-  -moz-user-select: none;
-  /* Old versions of Firefox */
-  -ms-user-select: none;
-  /* Internet Explorer/Edge */
-  user-select: none;
-  /* Non-prefixed version, currently
-               supported by Chrome, Opera and Firefox */
-  border-color: rgba(0, 0, 0, 0.3);
-  border-style: solid;
-  border-width: 2px;
-  border-bottom-width: 4px;
-  padding: 1rem 1rem 1rem 3.2rem;
-  color: white;
-  text-decoration: none;
-  webkit-transition: color .1s ease-in-out,background-color .1s ease-in-out;
-  transition: color .1s ease-in-out,background-color .1s ease-in-out;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.0125), 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.0125), 0 1px 1px rgba(0, 0, 0, 0.05);
-  border-top-width: .0625rem;
-  border-bottom-width: calc(.2rem + .0625rem);
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  background-color: green;
-  -webkit-transition: all .1s ease-in;
-  transition: all .1s ease-in;
-  text-align: center;
-  font-weight: bolder;
-  font-size: 1.8em;
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  margin: 0px 5px;
-  width: 150px;
-  font-size: 22px;
-  padding: 9px;
+/* line 185, ../../../sass/style.scss */
+.game-wrapper .play-area .card.small .animal {
+  display: none;
 }
-/* line 62, ../../../sass/style.scss */
-.game-wrapper .hand-area .hand-buttons .button:hover, .game-wrapper .hand-area .hand-buttons .button:focus {
-  background-color: darkgreen;
-}
-/* line 65, ../../../sass/style.scss */
-.game-wrapper .hand-area .hand-buttons .button .fa, .game-wrapper .hand-area .hand-buttons .button .fab {
-  position: absolute;
-  top: 0px;
-  height: 100%;
-  left: 0px;
-  background: rgba(0, 0, 0, 0.3);
-  margin: 0px;
-  padding: 0.8em .6em 0 .4em;
-  font-size: .9em;
-}
-/* line 77, ../../../sass/style.scss */
-.game-wrapper .hand-area .hand-buttons .button.button-blue {
-  background-color: blue;
-}
-/* line 79, ../../../sass/style.scss */
-.game-wrapper .hand-area .hand-buttons .button.button-blue:hover, .game-wrapper .hand-area .hand-buttons .button.button-blue:focus {
-  background-color: darkblue;
-}
-/* line 84, ../../../sass/style.scss */
-.game-wrapper .hand-area .hand-buttons .button.button-red {
-  background-color: red;
-}
-/* line 86, ../../../sass/style.scss */
-.game-wrapper .hand-area .hand-buttons .button.button-red:hover, .game-wrapper .hand-area .hand-buttons .button.button-red:focus {
-  background-color: darkred;
-}
-/* line 91, ../../../sass/style.scss */
-.game-wrapper .hand-area .hand-buttons .button.button-yellow {
-  background-color: yellow;
-}
-/* line 93, ../../../sass/style.scss */
-.game-wrapper .hand-area .hand-buttons .button.button-yellow:hover, .game-wrapper .hand-area .hand-buttons .button.button-yellow:focus {
-  background-color: goldenrod;
-}
-/* line 98, ../../../sass/style.scss */
-.game-wrapper .hand-area .hand-buttons .button.button-small {
-  font-size: 1.2em;
-  padding: .7em 0 .6em 2.2rem;
-}
-/* line 377, ../../../sass/style.scss */
-.game-wrapper .hand-area .hand-buttons .button.pass-button {
-  background: darkred;
-}
-/* line 379, ../../../sass/style.scss */
-.game-wrapper .hand-area .hand-buttons .button.pass-button:hover {
-  background: red;
-}
-/* line 387, ../../../sass/style.scss */
+/* line 192, ../../../sass/style.scss */
 .game-wrapper .card {
   width: 90px;
   height: 140px;
@@ -519,46 +708,55 @@
   position: relative;
   margin-right: -60px;
 }
-/* line 400, ../../../sass/style.scss */
+/* line 205, ../../../sass/style.scss */
 .game-wrapper .card.selected {
   margin-top: -18px;
 }
-/* line 404, ../../../sass/style.scss */
+/* line 209, ../../../sass/style.scss */
 .game-wrapper .card:hover {
   border-width: 2px;
 }
-/* line 408, ../../../sass/style.scss */
+/* line 213, ../../../sass/style.scss */
 .game-wrapper .card.card-color-red {
   color: red;
 }
-/* line 411, ../../../sass/style.scss */
+/* line 216, ../../../sass/style.scss */
 .game-wrapper .card.card-color-green {
   color: green;
 }
-/* line 414, ../../../sass/style.scss */
+/* line 219, ../../../sass/style.scss */
 .game-wrapper .card.card-color-blue {
   color: blue;
 }
-/* line 417, ../../../sass/style.scss */
+/* line 222, ../../../sass/style.scss */
 .game-wrapper .card.card-color-orange {
   color: orange;
 }
-/* line 421, ../../../sass/style.scss */
+/* line 226, ../../../sass/style.scss */
 .game-wrapper .card.stem {
   transform: rotate(90deg);
 }
-/* line 425, ../../../sass/style.scss */
+/* line 230, ../../../sass/style.scss */
 .game-wrapper .card .card-number {
   font-weight: bold;
+  font-size: 1.3em;
 }
-/* line 430, ../../../sass/style.scss */
+/* line 236, ../../../sass/style.scss */
 .game-wrapper .card .card-number.bottom-right {
-  transform: rotate(180);
+  transform: rotate(180deg);
   position: absolute;
   right: 8px;
   bottom: 8px;
 }
-/* line 440, ../../../sass/style.scss */
+/* line 244, ../../../sass/style.scss */
+.game-wrapper .card .animal {
+  font-size: 3em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* line 251, ../../../sass/style.scss */
 .game-wrapper .player-wrapper {
   border: #ccc 1px solid;
   border-radius: 6px;
@@ -568,41 +766,41 @@
   right: 10px;
   padding: 6px;
 }
-/* line 448, ../../../sass/style.scss */
+/* line 259, ../../../sass/style.scss */
 .game-wrapper .player-wrapper h2 {
   font-size: 12px;
   text-align: center;
   font-weight: bold;
 }
-/* line 453, ../../../sass/style.scss */
+/* line 264, ../../../sass/style.scss */
 .game-wrapper .player-wrapper ul {
   padding: 0px 6px;
   margin: 0px;
   list-style: none;
 }
-/* line 460, ../../../sass/style.scss */
+/* line 271, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result {
   width: 300px;
 }
-/* line 462, ../../../sass/style.scss */
+/* line 273, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result .score-line {
   justify-content: space-between;
   display: flex;
 }
-/* line 466, ../../../sass/style.scss */
+/* line 277, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result .score-line.header {
   font-weight: bold;
 }
-/* line 469, ../../../sass/style.scss */
+/* line 280, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result .score-line .player {
   width: 60%;
 }
-/* line 471, ../../../sass/style.scss */
+/* line 282, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result .score-line .player .icon {
   float: left;
   margin: 1px 5px 0px 5px;
 }
-/* line 476, ../../../sass/style.scss */
+/* line 287, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result .score-line .score, .game-wrapper .show-score .score-result .score-line .total {
   text-align: center;
   width: 19%;

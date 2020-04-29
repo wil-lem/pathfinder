@@ -1,120 +1,15 @@
-@mixin valign {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-$shadow-color: rgba(100,100,100,.5);
-$buttonGreen: green;
-$buttonDarkGreen: darkgreen;
-$buttonBlue: blue;
-$buttonDarkBlue: darkblue;
-
-@mixin shadow {
-  box-shadow: $shadow-color 0px 5px 5px;
-}
-@mixin desktop-shadow {
-  box-shadow: rgba(100,100,100,.5) 7px 7px 5px;
-}
-
-@mixin noSelect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Opera and Firefox */
-}
-
-
-@mixin button {
-  @include noSelect;
-  border-color: rgba(0,0,0,0.3);
-  border-style: solid;
-  border-width: 2px;
-  border-bottom-width: 4px;
-  padding: 1rem 1rem 1rem 3.2rem;
-  color: white;
-  text-decoration: none;
-
-  webkit-transition: color .1s ease-in-out,background-color .1s ease-in-out;
-  transition: color .1s ease-in-out,background-color .1s ease-in-out;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.0125), 0 1px 1px rgba(0,0,0,0.05);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.0125), 0 1px 1px rgba(0,0,0,0.05);
-  border-top-width: .0625rem;
-  border-bottom-width: calc(.2rem + .0625rem);
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-
-  background-color: $buttonGreen;
-  -webkit-transition: all .1s ease-in;
-  transition: all .1s ease-in;
-  text-align: center;
-  font-weight: bolder;
-  font-size: 1.8em;
-  position: relative;
-  cursor: pointer;
-
-
-  &:hover, &:focus {
-    background-color: $buttonDarkGreen
-  }
-  .fa, .fab {
-    position: absolute;
-    top: 0px;
-    height: 100%;
-    left: 0px;
-    background: rgba(0,0,0,.3);
-    margin: 0px;
-    padding: 0.8em .6em 0 .4em;
-    font-size: .9em;
-
-  }
-
-  &.button-blue {
-    background-color: $buttonBlue;
-    &:hover, &:focus {
-      background-color: $buttonDarkBlue;
-    }
-  }
-
-  &.button-red {
-    background-color: red;
-    &:hover, &:focus {
-      background-color: darkred;
-    }
-  }
-
-  &.button-yellow {
-    background-color: yellow;
-    &:hover, &:focus {
-      background-color: goldenrod;
-    }
-  }
-
-  &.button-small {
-    font-size: 1.2em;
-    padding: .7em 0 .6em 2.2rem;
-  }
-}
-
-@mixin deny-select {
-  user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select:  none;
-}
-
+@import "includes/variables";
+@import "includes/mixins";
+@import "includes/elements";
+@import "includes/hand";
 
 * {
   box-sizing: border-box;
 }
 
-.game-wrapper {
 
+
+.game-wrapper {
   position: fixed;
   top: 0px;
   bottom: 0px;
@@ -142,46 +37,9 @@ $buttonDarkBlue: darkblue;
   font-family: Calibri, Arial, sans-serif;
 
 
-  .error-wrapper {
-    position: absolute;
-    z-index: 1000;
-    top:0px;
-    left: 0px;
-    width:100%;
 
-    .message {
-      margin: 10px 10px 0px 10px;
 
-      background: lightgreen;
-      padding: 10px 40px 10px 10px;
-      border-radius: 6px;
-      border: green 1px solid;
-      position: relative;
-      cursor: pointer;
 
-      &.error-message {
-        border-color: darkred;
-        background-color: lightcoral;
-      }
-    }
-  }
-
-  .fieldset {
-    border: black 1px solid;
-    padding: .5rem;
-    position: relative;
-    h2 {
-      margin-top: -1.5rem;
-      font-size: 1.5em;
-      background: white;
-      margin: 0px;
-      padding: .2em;
-      display: inline-block;
-      position: absolute;
-      top: -1rem;
-    }
-
-  }
 
   .player {
     font-size: 1.2em;
@@ -211,62 +69,16 @@ $buttonDarkBlue: darkblue;
     }
   }
 
-  .center-block {
-    display: inline-block;
-    padding: 30px;
-    background: white;
-    box-shadow: #ccc 2px 1px;
-    width: 100%;
-    @include shadow;
-    @include valign;
 
-    input[type=text] {
-      padding: 20px;
-      font-size: 25px;
-      margin-bottom: 20px;
-      border: grey 1px solid;
-    }
-
-    div {
-      margin: 5px 0px;
-    }
-
-    div.button, a.button {
-      @include button;
-      margin: .5em 0;
-
-    }
-
-    .copy-widget {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      input {
-        width: 100%;
-
-      }
-      .button {
-        font-size: 1em;
-        width: 45%;
-      }
-    }
-
-
-    .card {
-      margin: auto;
-      float: none;
-      &:hover {
-        border-width: 1px;
-      }
-    }
-  }
 
   .play-area-wrapper {
     position: absolute;
     right: 0px;
     top: 0px;
     left: 0px;
-    height: 70vh;
+    height: 80vh;
+    z-index: 5;
+
 
     .choose-first-card {
       .choose-color, .choose-number {
@@ -312,21 +124,38 @@ $buttonDarkBlue: darkblue;
 
       .confirm-button {
         @include button;
-
-
       }
 
+      .card {
+        float: none;
+        margin: .5em auto;
+      }
+
+      @media (orientation: landscape) {
+        .center-block-left {
+          width: 80%;
+        }
+        .center-block-right {
+          width:18%;
+          position: relative;
+          .card {
+            @include valign;
+          }
+        }
+      }
     }
   }
 
 
   .play-area {
 
+    z-index: 6;
     position: relative;
     width: 100%;
     height: 100%;
     .card {
       position: absolute;
+      box-shadow: rgba(100,100,100,.8) 3px 3px 2px;
 
       &.card-color-red {
         left: 30px;
@@ -344,41 +173,17 @@ $buttonDarkBlue: darkblue;
       &.card-color-orange {
         left: 630px;
       }
-    }
-  }
 
-  .hand-area {
-    border-top: 1px solid #ccc;
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    height: 30vh;
-    background: rgba(0,0,0,.2);
-    padding: 20px;
-
-    .hand-buttons {
-      position: absolute;
-      bottom: 30vh;
-      width: 100%;
-      left: 0px;
-      padding: 0px 0px 5px 0px;
-      text-align: center;
-
-      .button {
-        @include button;
-
-        display: inline-block;
-        margin: 0px 5px;
-        width: 150px;
-        font-size: 22px;
-        padding: 9px;
-
-        &.pass-button {
-          background: darkred;
-          &:hover {
-            background: red;
-          }
+      &.small {
+        .card-number {
+          @include valign;
+          font-size: 30px;
+        }
+        .bottom-right {
+          display: none;
+        }
+        .animal {
+          display: none;
         }
       }
     }
@@ -424,15 +229,21 @@ $buttonDarkBlue: darkblue;
 
     .card-number {
       font-weight: bold;
+      font-size: 1.3em;
       &.top-left {
 
       }
       &.bottom-right {
-        transform: rotate(180);
+        transform: rotate(180deg);
         position: absolute;
         right: 8px;
         bottom: 8px;
       }
+
+    }
+    .animal {
+      font-size: 3em;
+      @include valign;
 
     }
   }

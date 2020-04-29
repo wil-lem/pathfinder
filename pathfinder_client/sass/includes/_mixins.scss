@@ -1,0 +1,122 @@
+@mixin valign {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+@mixin shadow {
+  box-shadow: rgba(100,100,100,.5) 7px 7px 5px;
+}
+
+@mixin noSelect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+
+@mixin button {
+  @include noSelect;
+  border-color: rgba(0,0,0,0.3);
+  border-style: solid;
+  border-width: 2px;
+  border-bottom-width: 4px;
+  padding: 1rem 1rem 1rem 3.2rem;
+  color: white;
+  text-decoration: none;
+
+  webkit-transition: color .1s ease-in-out,background-color .1s ease-in-out;
+  transition: color .1s ease-in-out,background-color .1s ease-in-out;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.0125), 0 1px 1px rgba(0,0,0,0.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.0125), 0 1px 1px rgba(0,0,0,0.05);
+  border-top-width: .0625rem;
+  border-bottom-width: calc(.2rem + .0625rem);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  background-color: $buttonGreen;
+  -webkit-transition: all .1s ease-in;
+  transition: all .1s ease-in;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.8em;
+  position: relative;
+  cursor: pointer;
+
+
+  &:hover, &:focus {
+    background-color: $buttonDarkGreen
+  }
+  .fa, .fab {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    left: 0px;
+    background: rgba(0,0,0,.3);
+    margin: 0px;
+    padding: 0.8em .6em 0 .4em;
+    font-size: .9em;
+
+  }
+
+  &.button-blue {
+    background-color: $buttonBlue;
+    &:hover, &:focus {
+      background-color: $buttonDarkBlue;
+    }
+  }
+
+  &.button-red {
+    background-color: red;
+    &:hover, &:focus {
+      background-color: darkred;
+    }
+  }
+
+  &.button-yellow {
+    background-color: yellow;
+    &:hover, &:focus {
+      background-color: goldenrod;
+    }
+  }
+
+  &.button-small {
+    font-size: 1.2em;
+    padding: .7em 0 .6em 2.2rem;
+  }
+
+  &.disabled {
+    cursor: default;
+    background: #cccccc;
+  }
+}
+
+@mixin deny-select {
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select:  none;
+}
+
+@mixin buttonIconOnly {
+  overflow: hidden;
+  height: 3rem;
+  text-indent: -999px;
+  height: 3rem;
+  .fa, .fab {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    text-indent: 0px;
+    font-size: 1.5em;
+    top: 7px;
+    background: none;
+  }
+}

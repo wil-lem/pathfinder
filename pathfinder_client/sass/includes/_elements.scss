@@ -1,0 +1,180 @@
+.error-wrapper {
+  position: absolute;
+  z-index: 1000;
+  top:0px;
+  left: 0px;
+  width:100%;
+
+  .message {
+    margin: 10px 10px 0px 10px;
+
+    background: lightgreen;
+    padding: 10px 40px 10px 10px;
+    border-radius: 6px;
+    border: green 1px solid;
+    position: relative;
+    cursor: pointer;
+
+    &.error-message {
+      border-color: darkred;
+      background-color: lightcoral;
+    }
+  }
+}
+
+.fieldset {
+  border: black 1px solid;
+  padding: .5rem;
+  position: relative;
+  margin-top: 1rem;
+  h2 {
+    margin-top: -1.5rem;
+    font-size: 1.5em;
+    background: white;
+    margin: 0px;
+    padding: .2em;
+    display: inline-block;
+    position: absolute;
+    top: -1rem;
+  }
+}
+
+.center-block-wrapper {
+  padding: 0px 1rem;
+  width: 100%;
+  @include valign;
+  z-index: 1000;
+  .center-block {
+    display: block;
+    padding: 1rem;
+    margin: 0px auto;
+    max-width: 400px;
+    background: white;
+    @include shadow;
+  }
+
+
+
+  input[type=text] {
+    padding: .5em;
+    font-size: 1.5em;
+    width: 100%;
+    margin: .5em 0;
+    border: grey 1px solid;
+  }
+
+  div.button, a.button {
+    @include button;
+    margin: .5em 0;
+
+  }
+
+  .copy-widget {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    input {
+      width: 100%;
+
+    }
+    .button {
+      font-size: 1em;
+      width: 45%;
+    }
+  }
+
+
+  .card {
+    margin: auto;
+    float: none;
+    &:hover {
+      border-width: 1px;
+    }
+  }
+
+  &.notify-first-card {
+    .card {
+      margin: 1em auto;
+      display: block;
+      float:none;
+
+    }
+  }
+
+
+  @media (orientation: landscape) {
+    .two-cols.center-block {
+      max-width: 600px;
+      display: flex;
+      justify-content: space-between;
+      .center-block-left,.center-block-right {
+        width: 48%;
+        .copy-widget {
+          .button {
+            @include buttonIconOnly;
+          }
+        }
+      }
+    }
+  }
+}
+
+.game-players-wrapper {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 10;
+  .game-players {
+    background: rgba(100,100,100,.5);
+    position: relative;
+    box-shadow: rgba(0,0,0,.7) 7px 0px 5px;
+
+    .fa-users {
+      position: absolute;
+      bottom: -50px;
+      right: 1rem;
+      margin: 0px .5em 0px 0px;
+      background: rgba(100,100,100,.5);
+      border: black 1px solid;
+      padding: .5em;
+      font-size: 1.5em;
+      cursor: pointer;
+      border-top: 0px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    .player-list {
+      height: 0px;
+      padding:0px;
+      margin: 0px;
+      display: flex;
+      width: 100%;
+      list-style: none;
+      justify-content: space-between;
+      overflow: hidden;
+      flex-wrap: wrap;
+
+      li {
+        padding: .3rem;
+        min-width: 30%;
+
+        .game-turn {
+          .icon {
+            color: green;
+          }
+        }
+        .round-turn {
+          color: green;
+        }
+      }
+    }
+
+    &.open {
+      .player-list {
+        height: auto;
+      }
+    }
+  }
+}
