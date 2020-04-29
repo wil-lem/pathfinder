@@ -126,16 +126,17 @@
   width: 100%;
   z-index: 10;
   .game-players {
-    background: rgba(100,100,100,.5);
-    position: relative;
+    background: black;
+    color: white;position: relative;
     box-shadow: rgba(0,0,0,.7) 7px 0px 5px;
 
     .fa-users {
       position: absolute;
-      bottom: -50px;
+      bottom: -49px;
       right: 1rem;
       margin: 0px .5em 0px 0px;
-      background: rgba(100,100,100,.5);
+      background: black;
+      color: white;
       border: black 1px solid;
       padding: .5em;
       font-size: 1.5em;

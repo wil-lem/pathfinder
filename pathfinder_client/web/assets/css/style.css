@@ -228,17 +228,19 @@
 }
 /* line 128, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players {
-  background: rgba(100, 100, 100, 0.5);
+  background: black;
+  color: white;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.7) 7px 0px 5px;
 }
 /* line 133, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players .fa-users {
   position: absolute;
-  bottom: -50px;
+  bottom: -49px;
   right: 1rem;
   margin: 0px .5em 0px 0px;
-  background: rgba(100, 100, 100, 0.5);
+  background: black;
+  color: white;
   border: black 1px solid;
   padding: .5em;
   font-size: 1.5em;
@@ -247,7 +249,7 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-/* line 148, ../../../sass/includes/_elements.scss */
+/* line 149, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players .player-list {
   height: 0px;
   padding: 0px;
@@ -259,20 +261,20 @@
   overflow: hidden;
   flex-wrap: wrap;
 }
-/* line 159, ../../../sass/includes/_elements.scss */
+/* line 160, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players .player-list li {
   padding: .3rem;
   min-width: 30%;
 }
-/* line 164, ../../../sass/includes/_elements.scss */
+/* line 165, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players .player-list li .game-turn .icon {
   color: green;
 }
-/* line 168, ../../../sass/includes/_elements.scss */
+/* line 169, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players .player-list li .round-turn {
   color: green;
 }
-/* line 175, ../../../sass/includes/_elements.scss */
+/* line 176, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players.open .player-list {
   height: auto;
 }
