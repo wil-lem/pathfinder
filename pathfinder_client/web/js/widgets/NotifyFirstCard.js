@@ -1,22 +1,20 @@
 class NotifyFirstCard {
     constructor(wrapper, color, number, userName) {
-        this.wrapper = Interactions.createDiv({class:'center-block notify-first-card'});
-
-        wrapper.appendChild(this.wrapper);
-
+        this.modal = new Modal(wrapper);
+        this.modal.addClass('notify-first-card');
 
         var text = Interactions.createDiv();
         text.innerHTML = '<em>' + userName + '</em> asked for the ' + color + ' ' + number;
-        this.wrapper.appendChild(text);
+        this.modal.addToLeft(text);
 
         var card = new Card(number,color);
-        this.wrapper.appendChild(card.getElement());
+        this.modal.addToLeft(card.getElement());
 
 
     }
 
     remove() {
-        this.wrapper.remove();
+        this.modal.remove();
     }
 
 }

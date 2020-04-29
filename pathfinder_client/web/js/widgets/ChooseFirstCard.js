@@ -1,6 +1,8 @@
 class ChooseFirstCard {
     constructor(wrapper, parent) {
-        this.wrapper = Interactions.createDiv({class:'center-block choose-first-card'});
+
+        this.firstCardModal = new Modal(wrapper);
+        this.firstCardModal.addClass('choose-first-card');
 
         this.colorButtons = [];
         this.selectedColor = null;
@@ -12,12 +14,10 @@ class ChooseFirstCard {
 
         this.parent = parent;
 
-        wrapper.appendChild(this.wrapper);
-
 
         var text = Interactions.createDiv();
         text.textContent = 'Choose the first card';
-        this.wrapper.appendChild(text);
+        this.firstCardModal.addToLeft(text);
 
         var chooseColor = Interactions.createDiv({class:'choose-color'});
         var colors = ['red','green','black','blue','orange'];
@@ -26,22 +26,23 @@ class ChooseFirstCard {
             chooseColor.appendChild(this.createColorButton(color));
         });
 
-        this.wrapper.appendChild(chooseColor);
+        this.firstCardModal.addToLeft(chooseColor);
 
         var chooseNumber = Interactions.createDiv({class:'choose-number'});
         for(var number = 2; number < 10; number++) {
             chooseNumber.appendChild(this.createNumberButton(number));
         }
-        this.wrapper.appendChild(chooseNumber);
+        this.firstCardModal.appendChild(chooseNumber);
 
-        this.confirmButton = Interactions.createDiv({class:'confirm-button disabled'});
-        this.confirmButton.textContent = 'Choose';
+        this.confirmButton = new Button('Choose');
+        this.confirmButton.disable();
+        this.confirmButton.adFaIcon('check');
 
-        this.confirmButton.onclick = () => {
+        this.confirmButton.onClick(() => {
             this.chooseCard();
-        };
+        });
 
-        this.wrapper.appendChild(this.confirmButton);
+        this.firstCardModal.addToLeft(this.confirmButton.getElement());
 
     }
 
@@ -49,7 +50,6 @@ class ChooseFirstCard {
         var element = Interactions.createDiv({class:'color-button'});
         element.style.backgroundColor = color;
         element.onclick = () => {
-            console.log('click color',color);
             this.selectColor(element,color);
         };
         this.colorButtons.push(element);
@@ -60,7 +60,6 @@ class ChooseFirstCard {
         if(color === this.selectedColor) {
             return;
         }
-        console.log('selectcolor',color);
 
         this.colorButtons.forEach((element) => {
             if(element !== selectedElement) {
@@ -112,10 +111,10 @@ class ChooseFirstCard {
             return;
         }
 
-        this.confirmButton.classList.remove('disabled');
+        this.confirmButton.enable();
 
         this.preview = new Card(this.selectedNumber,this.selectedColor);
-        this.wrapper.appendChild(this.preview.getElement());
+        this.firstCardModal.addToRight(this.preview.getElement());
     }
 
     chooseCard() {
@@ -127,7 +126,7 @@ class ChooseFirstCard {
     }
 
     remove() {
-        this.wrapper.remove();
+        this.firstCardModal.remove();
     }
 
 }

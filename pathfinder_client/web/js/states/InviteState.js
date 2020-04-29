@@ -8,22 +8,24 @@ class InviteState extends BaseState {
     createHTML() {
         this.gameStart = null;
 
-        this.center = Interactions.createDiv({class:'center-block'});
+        this.center = new Modal(this.wrapper);
 
         var token = Interactions.createCopyWidget(this.parent.getBaseURL() + '/?game=' + this.token,this.parent.getMessageHandler());
+
 
         var name = Interactions.createDiv();
         name.innerHTML = '<h2>Welcome ' + this.name + '</h2>Share this URL to invite others<br>';
 
-        this.center.appendChild(name);
-        this.center.appendChild(token);
+        this.center.addToLeft(name);
+        this.center.addToLeft(token);
 
-        this.addCpu = new Button('Add CPU',this.center);
+        this.addCpu = new Button('Add CPU');
         this.addCpu.addClass('buton-blue');
         this.addCpu.onClick(() => {
            this.addCpuPlayer();
         }).adFaIcon('microchip');
 
+        this.center.addToRight(this.addCpu.getElement());
 
         var playersWrapper = Interactions.createDiv({class: 'players-wrapper fieldset'});
         Interactions.addHeader(playersWrapper,'Players');
@@ -31,9 +33,9 @@ class InviteState extends BaseState {
         playersWrapper.appendChild(this.playersUL);
         this.parent.players.subscribe(this);
 
-        this.center.appendChild(playersWrapper);
+        this.center.addToRight(playersWrapper);
 
-        this.addToWrapper(this.center);
+
 
         super.createHTML();
     }
@@ -53,13 +55,11 @@ class InviteState extends BaseState {
 
     enableGameStart(data) {
         if(this.gameStart === null) {
-            this.gameStart = Interactions.createDiv({class: 'button'});
-            this.center.appendChild(this.gameStart);
-            this.gameStart.textContent = 'Start game';
-
-            this.gameStart.onclick = () => {
+            this.gameStart = new Button('Start',this.center);
+            this.gameStart.adFaIcon('hiking');
+            this.gameStart.onClick(() => {
                 this.parent.startTheGame();
-            }
+            });
         }
     }
 
@@ -69,6 +69,7 @@ class InviteState extends BaseState {
             this.center.appendChild(this.gameStart);
 
         }
+        this.addCpu.hide();
         this.gameStart.innerHTML = 'Wating for <em>' + data.creator + '</em> to start the game.';
     }
 

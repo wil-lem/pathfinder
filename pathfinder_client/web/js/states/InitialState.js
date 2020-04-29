@@ -1,18 +1,17 @@
 class InitialState extends BaseState {
     createHTML() {
+        this.center = new Modal(this.wrapper);
+
         this.token = undefined;
-
         this.inputName = Interactions.createInputText({placeholder: 'Your name'});
-
         this.inputName.value = 'willem ' + Math.round(Math.random() * 100);
 
-        this.center = Interactions.createDiv({class:'center-block'});
-        this.center.appendChild(this.inputName);
+        this.center.addToLeft(this.inputName);
+
 
         this.startGameButton = new Button('Start game',this.center);
         this.startGameButton.adFaIcon('hiking');
 
-        this.addToWrapper(this.center);
 
 
 
@@ -43,6 +42,6 @@ class InitialState extends BaseState {
 
     setGameToken(token) {
         this.token = token;
-        this.startGameButton.textContent = 'Join game';
+        this.startGameButton.setText('Join game');
     }
 }

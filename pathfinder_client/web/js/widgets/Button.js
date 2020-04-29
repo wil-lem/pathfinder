@@ -3,7 +3,9 @@ class Button {
         this.active = true;
         this.element = Interactions.createDiv({class:'button'});
         this.element.textContent = text;
-        wrapper.appendChild(this.element);
+        if(wrapper !== undefined) {
+            wrapper.appendChild(this.element);
+        }
     }
 
     setWaShare(shareText) {
@@ -72,5 +74,13 @@ class Button {
     setText(text) {
         this.element.textContent = text;
         return this;
+    }
+
+    getElement() {
+        return this.element;
+    }
+
+    hide(){
+        this.element.style.display = 'none';
     }
 }

@@ -18,41 +18,50 @@ class RoundState extends BaseState {
     createHTML() {
         super.createHTML();
 
+        this.players = new GameRoundPlayers(this.wrapper);
+
+        this.parent.players.subscribe(this.players);
+
+
         this.playAreaWrapper = Interactions.createDiv({class:'play-area-wrapper'});
         this.playArea = Interactions.createDiv({class:'play-area'});
-        this.handArea = Interactions.createDiv({class:'hand-area'});
-
         this.addToWrapper(this.playAreaWrapper);
-
         this.playAreaWrapper.appendChild(this.playArea);
 
-        this.addToWrapper(this.handArea);
+
+        this.handArea = new Hand(this)
+        this.addToWrapper(this.handArea.getElement());
 
 
         for(var i in this.cards) {
-            this.addToWrapper(this.cards[i].getElement(),this.handArea);
+            this.handArea.addCard(this.cards[i]);
         }
+
         if(this.startGame) {
             this.chooseFirstCardElement = new ChooseFirstCard(this.playAreaWrapper,this);
         }
-
         this.buttons = Interactions.createDiv({class:'hand-buttons'});
-        this.handArea.appendChild(this.buttons);
+        this.wrapper.appendChild(this.buttons);
+
 
         this.passButton = new Button('Pass',this.buttons);
         this.passButton.addClass('pass-button').disable().onClick(()=>{
-            console.log(this);
             this.passTurn();
         });
+        this.passButton.adFaIcon('hand-paper');
 
         this.playButton = new Button('Play',this.buttons);
         this.playButton.addClass('play-button').disable().onClick(()=>{
            this.playCard();
         });
+        this.playButton.adFaIcon('play');
 
         this.scoreModal = new ScoreModal(this.wrapper,this);
 
-
+        this.handArea.resize();
+        window.addEventListener("resize",() => {
+            this.resize()
+        });
     }
 
     scoreDone() {
@@ -118,9 +127,9 @@ class RoundState extends BaseState {
         this.askCard.remove();
         this.passButton.disable();
 
-
         for(var i in this.cards) {
             if(this.cards[i].color === color && this.cards[i].number === number) {
+                this.handArea.removeCard(this.cards[i]);
                 this.cards[i].remove();
                 break;
             }
@@ -134,47 +143,104 @@ class RoundState extends BaseState {
         this.tableCards.push(card);
 
         this.resize();
-        document.addEventListener('resize',() => {
-           this.resize();
-        });
+
+
+
     }
 
     resize() {
-        var bb = this.playArea.boundingClientRect;
+
+        var bbWindow = document.body.getBoundingClientRect();
+        var bbHand = this.handArea.getElement().getBoundingClientRect();
+        var h = bbWindow.height - bbHand.height;
+        var bbPlay = this.playArea.getBoundingClientRect();
+        var w = bbPlay.width;
+
+        var padding = 10;
+        var stemSpacing = 5;
+        var verticalSpacingFactor = .2;
+        var verticalStemSpacingFactor = .65;
+        h -= 2*padding;
+        w -= 2*padding;
+
+        var cardH = (w - 4 * stemSpacing) / 5;
+        var cardRatio = 140/90;
+        var cardW = cardH / cardRatio;
+
+        // We know card size based on the width of the container, but we may be wrong
+        // check what this meanse for the height
+        var targetH = 0;
+        var stemNumber = null;
+
+        var baseX = 0;
+        var baseY = 0;
+
+        // In a full set to 1 and the 10 have to be fully shown
+        targetH += 2*cardH;
+        // There's always 1 stem card all others take up the vertical spacing
+        targetH += 7*verticalSpacingFactor * cardH;
+        // Add spacing to keep middle card visible
+        targetH += verticalStemSpacingFactor * cardW
+
+        if(targetH > h) {
+
+            // Recalculate everything based on height
+            // h = 2 * cardH + 7 * verticalSpacing * cardH + verticalStemSpacingFactor * cardW
+            // cardW = cardH / cardRatio
+            // h = 2 * cardH + 7 * verticalSpacing * cardH + verticalStemSpacingFactor * cardH *  1/cardRatio
+            // h = (2 + 7 * verticalSpacing + verticalStemSpacingFactor / cardRatio) * cardH
+            // h/(2 + 7 * verticalSpacing + verticalStemSpacingFactor / cardRatio) = cardH
+            cardH = h / (2 + 7 * verticalSpacingFactor + verticalStemSpacingFactor / cardRatio);
+            cardW = cardH/cardRatio;
+
+            baseX = (w - cardH * 5 - stemSpacing * 4) / 2;
+        } else {
+            baseY = (h - targetH) / 2;
+        }
+
+        // if(cardW > 100) {
+        //     cardW = 100;
+        //     cardH = cardW * cardRatio;
+        // }
+
+
+        this.playArea.style.height = h + 'px';
+
+        this.tableCards.forEach(card => {
+            card.setWidth(cardW);
+            if(card.distance === 0) {
+                stemNumber = card.number;
+            }
+        });
+
 
         var colors = [];
-        var xPadding = 30;
-        var xDistance = 146;
-        var yCenter = 200; // Based on 5
-        var yFirstStemOffset = 80;
-        var yDistance = 27;
 
-        for(var i in this.tableCards) {
-            var card = this.tableCards[i];
+        this.tableCards.forEach(card => {
             if(colors.indexOf(card.color) < 0) {
                 colors.push(card.color);
             }
-            var left = colors.indexOf(card.color) * xDistance + xPadding;
 
-            var top = card.distance * 30 + 400;
-            if(card.distance > 0) {
-                top = yCenter - yFirstStemOffset - yDistance * (card.distance-1);
-            } else if(card.distance === 0) {
-                top = yCenter;
-            } else {
-                top = yCenter + yFirstStemOffset - yDistance * (card.distance+1)
+            var top = padding + baseY;
+            var topDistance = 10-card.number;
+            top += topDistance * cardH * verticalSpacingFactor;
+
+
+            if(card.number === stemNumber) {
+                top += cardW / 2;
+                top += verticalStemSpacingFactor * cardW / 2;
             }
 
-            card.randomRotate();
+            if(card.number < stemNumber) {
+                // top += verticalStemSpacingFactor * cardW;
+                top += cardH;
+            }
 
-            top += card.offsetY;
-            left += card.offsetX;
+            var left = baseX + padding + (cardH/2 - cardW/2) + colors.indexOf(card.color) * (cardH + stemSpacing);
 
+            card.updateCss(top,left,cardW,cardH);
+        });
 
-
-            card.element.style.top = top + 'px';
-            card.element.style.left = left + 'px';
-        }
     }
 
     setTurn(turn) {

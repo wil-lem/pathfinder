@@ -1,35 +1,39 @@
 class ScoreModal {
     constructor(wrapper, parent) {
         this.parent = parent;
-        this.wrapper = Interactions.createDiv({class:'center-block show-score'});
+        this.modal = new Modal(wrapper);
+        this.modal.addClass('show-score')
+
         this.hide();
-        wrapper.appendChild(this.wrapper);
 
         var text = Interactions.createDiv();
         text.innerHTML = '<h2>Game done</h2>';
-        this.wrapper.appendChild(text);
+        this.modal.addToLeft(text);
 
         this.scoreWrapper = Interactions.createDiv({class:'score-result'});
+        this.modal.addToLeft(this.scoreWrapper);
 
-        this.wrapper.appendChild(this.scoreWrapper);
+        this.messages = Interactions.createDiv({class:'messages'});
+        this.modal.addToLeft(this.messages);
 
-        this.done = new Button('OK',this.wrapper);
+        this.done = new Button('OK');
+
+        this.modal.addToLeft(this.done.getElement());
 
         this.done.onClick(() => {
            this.done.disable();
            this.done.setText('Waiting');
-           console.log('this',this.parent);
            this.parent.scoreDone();
         });
 
     }
 
     hide() {
-        this.wrapper.style.display = 'none';
+        this.modal.hide();
     }
 
     show() {
-        this.wrapper.style.display = 'block';
+        this.modal.show();
     }
 
     clearScore() {
@@ -37,15 +41,24 @@ class ScoreModal {
     }
 
     showScore(scoreData) {
-
         this.done.enable();
         this.done.setText('Done');
 
         this.clearScore();
         this.addScoreHeader();
+
+        var messages = [];
         scoreData.forEach(score => {
             this.addScoreLine(score);
+            if(score.illegalPassCount === 1) {
+                messages.push( score.player + ' illegally passed once.')
+            }
+            if(score.illegalPassCount > 1) {
+                messages.push( score.player + ' illegally passed ' + score.illegalPassCount + ' times.')
+            }
         });
+
+        this.messages.innerHTML = messages.join('<br>');
 
         this.show();
     }

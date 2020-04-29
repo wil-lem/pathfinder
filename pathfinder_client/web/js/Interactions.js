@@ -20,8 +20,28 @@ class Interactions {
      */
     static createPlayer(playerData, wrapper) {
         var player = Interactions.createDiv({class:'player'}, wrapper);
-        player.textContent = playerData.name;
+
+        switch (typeof playerData) {
+            case 'object':
+                player.textContent = playerData.name;
+                if (playerData.cardCount) {
+                    player.textContent += ' (' + playerData.cardCount + ')';
+                }
+                if (playerData.gameTurn) {
+                    player.classList.add('game-turn');
+                }
+                if (playerData.roundTurn) {
+                    player.classList.add('round-turn');
+                }
+                break;
+            case 'string':
+                player.textContent = playerData;
+                break;
+            default:
+                break;
+        }
         player.appendChild(Interactions.createDiv({class:'icon fa fa-user'}));
+
         return player;
     }
 
@@ -90,6 +110,7 @@ class Interactions {
         return element;
     }
 
+
     static addHeader(element,text, closable, movable) {
         var headerElement = Interactions.createElement('h2');
 
@@ -113,7 +134,6 @@ class Interactions {
         header.onclick = () => {
             var bb = element.boundingClientRect;
             var header = header.boundingClientRect;
-            console.log(eleme)
         }
     }
 

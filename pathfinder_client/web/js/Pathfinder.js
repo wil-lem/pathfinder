@@ -3,8 +3,6 @@ class Pathfinder {
         var url = this.getBaseURL();
         var parsed = this.parseURL(url);
         var socketUrl = parsed.protocol + '//' + parsed.hostname + ':3000';
-        console.log(parsed);
-        console.log(socketUrl);
 
         switch (parsed.hostname) {
             case 'pathfinder.modusoft.nl':
@@ -83,23 +81,6 @@ class Pathfinder {
             this.state.showScore(data);
         });
 
-
-
-        //
-        //
-        // this.emitToCreator('enableGameStart');
-        // this.emitToOthers(this.creator,'waitGameStart',{creator: this.creator.getName()});
-
-
-
-        // this.socket.on('position', function (data) {
-        //     console.log('got event position',data);
-        //     // socket.emit('my other event', { my: 'data' });
-        // });
-        // this.socket.on('test2', function (data) {
-        //     console.log('got event test',data);
-        //     // socket.emit('my other event', { my: 'data' });
-        // });
     }
 
     getMessageHandler() {
