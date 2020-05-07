@@ -8,6 +8,19 @@
 }
 /* line 8, ../../../sass/includes/_elements.scss */
 .error-wrapper .message {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+               supported by Chrome, Opera and Firefox */
   margin: 10px 10px 0px 10px;
   background: lightgreen;
   padding: 10px 40px 10px 10px;
@@ -16,20 +29,20 @@
   position: relative;
   cursor: pointer;
 }
-/* line 18, ../../../sass/includes/_elements.scss */
+/* line 19, ../../../sass/includes/_elements.scss */
 .error-wrapper .message.error-message {
   border-color: darkred;
   background-color: lightcoral;
 }
 
-/* line 25, ../../../sass/includes/_elements.scss */
+/* line 26, ../../../sass/includes/_elements.scss */
 .fieldset {
   border: black 1px solid;
   padding: .5rem;
   position: relative;
   margin-top: 1rem;
 }
-/* line 30, ../../../sass/includes/_elements.scss */
+/* line 31, ../../../sass/includes/_elements.scss */
 .fieldset h2 {
   margin-top: -1.5rem;
   font-size: 1.5em;
@@ -41,7 +54,7 @@
   top: -1rem;
 }
 
-/* line 42, ../../../sass/includes/_elements.scss */
+/* line 43, ../../../sass/includes/_elements.scss */
 .center-block-wrapper {
   padding: 0px 1rem;
   width: 100%;
@@ -51,7 +64,7 @@
   transform: translate(-50%, -50%);
   z-index: 1000;
 }
-/* line 47, ../../../sass/includes/_elements.scss */
+/* line 48, ../../../sass/includes/_elements.scss */
 .center-block-wrapper .center-block {
   display: block;
   padding: 1rem;
@@ -60,7 +73,7 @@
   background: white;
   box-shadow: rgba(100, 100, 100, 0.5) 7px 7px 5px;
 }
-/* line 58, ../../../sass/includes/_elements.scss */
+/* line 59, ../../../sass/includes/_elements.scss */
 .center-block-wrapper input[type=text] {
   padding: .5em;
   font-size: 1.5em;
@@ -68,7 +81,7 @@
   margin: .5em 0;
   border: grey 1px solid;
 }
-/* line 66, ../../../sass/includes/_elements.scss */
+/* line 67, ../../../sass/includes/_elements.scss */
 .center-block-wrapper div.button, .center-block-wrapper a.button {
   -webkit-touch-callout: none;
   /* iOS Safari */
@@ -158,48 +171,48 @@
   cursor: default;
   background: #cccccc;
 }
-/* line 72, ../../../sass/includes/_elements.scss */
+/* line 73, ../../../sass/includes/_elements.scss */
 .center-block-wrapper .copy-widget {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-/* line 76, ../../../sass/includes/_elements.scss */
+/* line 77, ../../../sass/includes/_elements.scss */
 .center-block-wrapper .copy-widget input {
   width: 100%;
 }
-/* line 80, ../../../sass/includes/_elements.scss */
+/* line 81, ../../../sass/includes/_elements.scss */
 .center-block-wrapper .copy-widget .button {
   font-size: 1em;
   width: 45%;
 }
-/* line 87, ../../../sass/includes/_elements.scss */
+/* line 88, ../../../sass/includes/_elements.scss */
 .center-block-wrapper .card {
   margin: auto;
   float: none;
 }
-/* line 90, ../../../sass/includes/_elements.scss */
+/* line 91, ../../../sass/includes/_elements.scss */
 .center-block-wrapper .card:hover {
   border-width: 1px;
 }
-/* line 96, ../../../sass/includes/_elements.scss */
+/* line 97, ../../../sass/includes/_elements.scss */
 .center-block-wrapper.notify-first-card .card {
   margin: 1em auto;
   display: block;
   float: none;
 }
 @media (orientation: landscape) {
-  /* line 106, ../../../sass/includes/_elements.scss */
+  /* line 107, ../../../sass/includes/_elements.scss */
   .center-block-wrapper .two-cols.center-block {
     max-width: 600px;
     display: flex;
     justify-content: space-between;
   }
-  /* line 110, ../../../sass/includes/_elements.scss */
+  /* line 111, ../../../sass/includes/_elements.scss */
   .center-block-wrapper .two-cols.center-block .center-block-left, .center-block-wrapper .two-cols.center-block .center-block-right {
     width: 48%;
   }
-  /* line 113, ../../../sass/includes/_elements.scss */
+  /* line 114, ../../../sass/includes/_elements.scss */
   .center-block-wrapper .two-cols.center-block .center-block-left .copy-widget .button, .center-block-wrapper .two-cols.center-block .center-block-right .copy-widget .button {
     overflow: hidden;
     height: 3rem;
@@ -218,7 +231,7 @@
   }
 }
 
-/* line 122, ../../../sass/includes/_elements.scss */
+/* line 123, ../../../sass/includes/_elements.scss */
 .game-players-wrapper {
   position: fixed;
   top: 0px;
@@ -226,14 +239,14 @@
   width: 100%;
   z-index: 10;
 }
-/* line 128, ../../../sass/includes/_elements.scss */
+/* line 129, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players {
-  background: black;
-  color: white;
+  background: rgba(150, 140, 130, 0.5);
+  color: black;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.7) 7px 0px 5px;
 }
-/* line 133, ../../../sass/includes/_elements.scss */
+/* line 135, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players .fa-users {
   position: absolute;
   bottom: -49px;
@@ -249,32 +262,56 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-/* line 149, ../../../sass/includes/_elements.scss */
+/* line 151, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players .player-list {
   height: 0px;
   padding: 0px;
   margin: 0px;
-  display: flex;
   width: 100%;
   list-style: none;
-  justify-content: space-between;
   overflow: hidden;
-  flex-wrap: wrap;
 }
-/* line 160, ../../../sass/includes/_elements.scss */
+/* line 162, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players .player-list li {
   padding: .3rem;
   min-width: 30%;
 }
-/* line 165, ../../../sass/includes/_elements.scss */
+/* line 167, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players .player-list li .game-turn .icon {
-  color: green;
+  color: darkgreen;
 }
-/* line 169, ../../../sass/includes/_elements.scss */
+/* line 171, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players .player-list li .round-turn {
-  color: green;
+  color: darkgreen;
 }
-/* line 176, ../../../sass/includes/_elements.scss */
+/* line 174, ../../../sass/includes/_elements.scss */
+.game-players-wrapper .game-players .player-list li .card {
+  width: 22px;
+  height: 27px;
+  border-radius: 3px;
+  font-weight: bold;
+  padding: 2px;
+  text-align: center;
+  float: none;
+}
+/* line 182, ../../../sass/includes/_elements.scss */
+.game-players-wrapper .game-players .player-list li .card.big-number {
+  font-size: .8em;
+  padding-top: 4px;
+}
+/* line 187, ../../../sass/includes/_elements.scss */
+.game-players-wrapper .game-players .player-list li .last-action {
+  margin-left: 6px;
+  display: inline-block;
+}
+/* line 191, ../../../sass/includes/_elements.scss */
+.game-players-wrapper .game-players .player-list li .fa.fa-hand-paper {
+  position: relative;
+  color: red;
+  margin-left: 5px;
+  font-size: 1em;
+}
+/* line 201, ../../../sass/includes/_elements.scss */
 .game-players-wrapper .game-players.open .player-list {
   height: auto;
 }
@@ -311,13 +348,37 @@
   position: absolute;
   top: 30px;
 }
+/* line 33, ../../../sass/includes/_hand.scss */
+.hand-area.disabled .card-slider .card {
+  color: #ccc;
+}
+/* line 37, ../../../sass/includes/_hand.scss */
+.hand-area.disabled .card-slider .card-color-red {
+  color: lightcoral;
+}
+/* line 41, ../../../sass/includes/_hand.scss */
+.hand-area.disabled .card-slider .card-color-green {
+  color: lightgreen;
+}
+/* line 45, ../../../sass/includes/_hand.scss */
+.hand-area.disabled .card-slider .card-color-blue {
+  color: lightblue;
+}
+/* line 48, ../../../sass/includes/_hand.scss */
+.hand-area.disabled .card-slider .card-color-orange {
+  color: #fed8b1;
+}
+/* line 51, ../../../sass/includes/_hand.scss */
+.hand-area.disabled .card-slider .card-color-black {
+  color: #333;
+}
 
-/* line 35, ../../../sass/includes/_hand.scss */
+/* line 62, ../../../sass/includes/_hand.scss */
 .hand-buttons {
   width: 0px;
   height: 0px;
 }
-/* line 44, ../../../sass/includes/_hand.scss */
+/* line 71, ../../../sass/includes/_hand.scss */
 .hand-buttons .button {
   -webkit-touch-callout: none;
   /* iOS Safari */
@@ -415,21 +476,26 @@
   cursor: default;
   background: #cccccc;
 }
-/* line 57, ../../../sass/includes/_hand.scss */
+/* line 84, ../../../sass/includes/_hand.scss */
 .hand-buttons .button .fa {
   font-size: 1em;
   padding-top: .4em;
 }
-/* line 62, ../../../sass/includes/_hand.scss */
+/* line 89, ../../../sass/includes/_hand.scss */
 .hand-buttons .button.pass-button {
   left: auto;
   right: .5rem;
   bottom: .2em;
   background: darkred;
 }
-/* line 68, ../../../sass/includes/_hand.scss */
+/* line 95, ../../../sass/includes/_hand.scss */
 .hand-buttons .button.pass-button:hover {
   background: red;
+}
+/* line 98, ../../../sass/includes/_hand.scss */
+.hand-buttons .button.pass-button.disabled {
+  cursor: default;
+  background: #cccccc;
 }
 
 /* line 6, ../../../sass/style.scss */
@@ -700,6 +766,19 @@
 }
 /* line 192, ../../../sass/style.scss */
 .game-wrapper .card {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+               supported by Chrome, Opera and Firefox */
   width: 90px;
   height: 140px;
   padding: 5px;
@@ -710,47 +789,51 @@
   position: relative;
   margin-right: -60px;
 }
-/* line 205, ../../../sass/style.scss */
+/* line 206, ../../../sass/style.scss */
 .game-wrapper .card.selected {
   margin-top: -18px;
 }
-/* line 209, ../../../sass/style.scss */
+/* line 210, ../../../sass/style.scss */
 .game-wrapper .card:hover {
   border-width: 2px;
 }
-/* line 213, ../../../sass/style.scss */
+/* line 214, ../../../sass/style.scss */
 .game-wrapper .card.card-color-red {
   color: red;
 }
-/* line 216, ../../../sass/style.scss */
+/* line 217, ../../../sass/style.scss */
+.game-wrapper .card.card-color-black {
+  color: black;
+}
+/* line 220, ../../../sass/style.scss */
 .game-wrapper .card.card-color-green {
   color: green;
 }
-/* line 219, ../../../sass/style.scss */
+/* line 223, ../../../sass/style.scss */
 .game-wrapper .card.card-color-blue {
   color: blue;
 }
-/* line 222, ../../../sass/style.scss */
+/* line 226, ../../../sass/style.scss */
 .game-wrapper .card.card-color-orange {
   color: orange;
 }
-/* line 226, ../../../sass/style.scss */
+/* line 230, ../../../sass/style.scss */
 .game-wrapper .card.stem {
   transform: rotate(90deg);
 }
-/* line 230, ../../../sass/style.scss */
+/* line 234, ../../../sass/style.scss */
 .game-wrapper .card .card-number {
   font-weight: bold;
   font-size: 1.3em;
 }
-/* line 236, ../../../sass/style.scss */
+/* line 240, ../../../sass/style.scss */
 .game-wrapper .card .card-number.bottom-right {
   transform: rotate(180deg);
   position: absolute;
   right: 8px;
   bottom: 8px;
 }
-/* line 244, ../../../sass/style.scss */
+/* line 248, ../../../sass/style.scss */
 .game-wrapper .card .animal {
   font-size: 3em;
   position: absolute;
@@ -758,7 +841,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-/* line 251, ../../../sass/style.scss */
+/* line 255, ../../../sass/style.scss */
 .game-wrapper .player-wrapper {
   border: #ccc 1px solid;
   border-radius: 6px;
@@ -768,41 +851,41 @@
   right: 10px;
   padding: 6px;
 }
-/* line 259, ../../../sass/style.scss */
+/* line 263, ../../../sass/style.scss */
 .game-wrapper .player-wrapper h2 {
   font-size: 12px;
   text-align: center;
   font-weight: bold;
 }
-/* line 264, ../../../sass/style.scss */
+/* line 268, ../../../sass/style.scss */
 .game-wrapper .player-wrapper ul {
   padding: 0px 6px;
   margin: 0px;
   list-style: none;
 }
-/* line 271, ../../../sass/style.scss */
+/* line 275, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result {
   width: 300px;
 }
-/* line 273, ../../../sass/style.scss */
+/* line 277, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result .score-line {
   justify-content: space-between;
   display: flex;
 }
-/* line 277, ../../../sass/style.scss */
+/* line 281, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result .score-line.header {
   font-weight: bold;
 }
-/* line 280, ../../../sass/style.scss */
+/* line 284, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result .score-line .player {
   width: 60%;
 }
-/* line 282, ../../../sass/style.scss */
+/* line 286, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result .score-line .player .icon {
   float: left;
   margin: 1px 5px 0px 5px;
 }
-/* line 287, ../../../sass/style.scss */
+/* line 291, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result .score-line .score, .game-wrapper .show-score .score-result .score-line .total {
   text-align: center;
   width: 19%;

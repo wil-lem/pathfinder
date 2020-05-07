@@ -190,6 +190,7 @@
   }
 
   .card {
+    @include noSelect;
     width: 90px;
     height: 140px;
     padding: 5px;
@@ -212,6 +213,9 @@
 
     &.card-color-red {
       color: red;
+    }
+    &.card-color-black {
+      color: black;
     }
     &.card-color-green {
       color: green;

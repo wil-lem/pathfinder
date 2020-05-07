@@ -6,6 +6,7 @@
   width:100%;
 
   .message {
+    @include noSelect;
     margin: 10px 10px 0px 10px;
 
     background: lightgreen;
@@ -126,8 +127,9 @@
   width: 100%;
   z-index: 10;
   .game-players {
-    background: black;
-    color: white;position: relative;
+    background: rgba(150,140,130,.5);
+    color: black;
+    position: relative;
     box-shadow: rgba(0,0,0,.7) 7px 0px 5px;
 
     .fa-users {
@@ -150,12 +152,12 @@
       height: 0px;
       padding:0px;
       margin: 0px;
-      display: flex;
+      //display: flex;
       width: 100%;
       list-style: none;
-      justify-content: space-between;
+      //justify-content: space-between;
       overflow: hidden;
-      flex-wrap: wrap;
+      //flex-wrap: wrap;
 
       li {
         padding: .3rem;
@@ -163,11 +165,34 @@
 
         .game-turn {
           .icon {
-            color: green;
+            color: darkgreen;
           }
         }
         .round-turn {
-          color: green;
+          color: darkgreen;
+        }
+        .card {
+          width: 22px;
+          height: 27px;
+          border-radius: 3px;
+          font-weight: bold;
+          padding: 2px;
+          text-align: center;
+          float: none;
+          &.big-number {
+            font-size: .8em;
+            padding-top: 4px;
+          }
+        }
+        .last-action {
+          margin-left: 6px;
+          display: inline-block;
+        }
+        .fa.fa-hand-paper {
+          position: relative;
+          color: red;
+          margin-left: 5px;
+          font-size: 1em;
         }
       }
     }

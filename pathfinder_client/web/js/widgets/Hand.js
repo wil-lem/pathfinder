@@ -33,4 +33,12 @@ class Hand {
         this.cards.splice(this.cards.indexOf(card),1);
         this.resize();
     }
+
+    enable() {
+        this.wrapper.classList.remove('disabled')
+    }
+
+    disable() {
+        this.wrapper.classList.add('disabled');
+    }
 }

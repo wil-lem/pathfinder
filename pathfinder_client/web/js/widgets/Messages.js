@@ -32,7 +32,7 @@ class Messages {
 
 
         message.onclick = () => {
-            Interactions.fadeOut(message);
+            message.remove();
         };
 
         message.innerHTML += messageText;

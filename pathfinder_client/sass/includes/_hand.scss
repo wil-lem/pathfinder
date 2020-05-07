@@ -28,6 +28,33 @@
       top: 30px;
     }
   }
+  &.disabled {
+    .card-slider {
+      .card {
+        color: #ccc;
+      }
+
+      .card-color-red {
+        color: lightcoral;
+      }
+
+      .card-color-green {
+        color: lightgreen;
+      }
+
+      .card-color-blue {
+        color: lightblue;
+      }
+      .card-color-orange {
+        color: #fed8b1;
+      }
+      .card-color-black {
+        color: #333;
+      }
+
+    }
+
+  }
 }
 
 
@@ -67,6 +94,10 @@
       background: darkred;
       &:hover {
         background: red;
+      }
+      &.disabled {
+        cursor: default;
+        background: #cccccc;
       }
     }
   }

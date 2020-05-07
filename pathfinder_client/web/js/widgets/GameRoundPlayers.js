@@ -23,24 +23,24 @@ class GameRoundPlayers {
         this.playerList.innerHTML = '';
         var foundMe = false;
         list.forEach(playerData => {
-            if(foundMe) {
+            // if(foundMe) {
                 var playerElement = Interactions.createElement('li',undefined,this.playerList);
                 Interactions.createPlayer(playerData,playerElement);
-            } else {
-                if(playerData.me) {
-                    foundMe = true;
-                }
-            }
-        });
-        foundMe = false;
-        list.forEach(playerData => {
-            if(playerData.me) {
-                foundMe = true;
-            }
-            if(!foundMe) {
-                var playerElement = Interactions.createElement('li',undefined,this.playerList);
-                Interactions.createPlayer(playerData,playerElement);
-            }
+            // } else {
+            //     if(playerData.me) {
+            //         foundMe = true;
+            //     }
+            // }
+        // });
+        // foundMe = false;
+        // list.forEach(playerData => {
+        //     if(playerData.me) {
+        //         foundMe = true;
+        //     }
+        //     if(!foundMe) {
+        //         var playerElement = Interactions.createElement('li',undefined,this.playerList);
+        //         Interactions.createPlayer(playerData,playerElement);
+        //     }
         });
     }
 }

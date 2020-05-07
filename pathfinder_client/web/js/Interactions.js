@@ -23,9 +23,9 @@ class Interactions {
 
         switch (typeof playerData) {
             case 'object':
-                player.textContent = playerData.name;
+                player.innerHTML = playerData.name;
                 if (playerData.cardCount) {
-                    player.textContent += ' (' + playerData.cardCount + ')';
+                    player.innerHTML += ' (' + playerData.cardCount + ')';
                 }
                 if (playerData.gameTurn) {
                     player.classList.add('game-turn');
@@ -33,9 +33,13 @@ class Interactions {
                 if (playerData.roundTurn) {
                     player.classList.add('round-turn');
                 }
+                if(playerData.lastAction !== undefined && playerData.lastAction) {
+                    this.addLastAction(player,playerData.lastAction);
+                }
+
                 break;
             case 'string':
-                player.textContent = playerData;
+                player.innerHTML = playerData;
                 break;
             default:
                 break;
@@ -43,6 +47,31 @@ class Interactions {
         player.appendChild(Interactions.createDiv({class:'icon fa fa-user'}));
 
         return player;
+    }
+
+    static addLastAction(wrapper,actionData) {
+        var lastAction = Interactions.createDiv({class: 'last-action'},wrapper);
+        console.log(actionData);
+        switch (actionData.action) {
+            case 'passed':
+                console.log('passed');
+                lastAction.classList.add('fa');
+                lastAction.classList.add('fa-hand-paper');
+                break;
+            case 'playcard':
+                console.log('played');
+                lastAction.classList.add('card');
+                lastAction.classList.add('card-color-' + actionData.card.color);
+                lastAction.innerHTML = actionData.card.number;
+                if(actionData.card.number == 10) {
+                    lastAction.classList.add('big-number');
+                }
+
+                break;
+            default:
+                console.log(actionData.action);
+                break;
+        }
     }
 
     static createInput(attrs) {

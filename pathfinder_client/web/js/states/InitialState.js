@@ -4,15 +4,12 @@ class InitialState extends BaseState {
 
         this.token = undefined;
         this.inputName = Interactions.createInputText({placeholder: 'Your name'});
-        this.inputName.value = 'willem ' + Math.round(Math.random() * 100);
 
         this.center.addToLeft(this.inputName);
 
 
         this.startGameButton = new Button('Start game',this.center);
         this.startGameButton.adFaIcon('hiking');
-
-
 
 
         super.createHTML();

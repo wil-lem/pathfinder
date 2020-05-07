@@ -246,9 +246,13 @@ class RoundState extends BaseState {
     setTurn(turn) {
         this.myTurn = turn;
         if(this.myTurn) {
+            this.handArea.enable();
             this.passButton.enable();
         } else {
+            console.log('disable');
+            this.handArea.disable();
             this.passButton.disable();
+            this.playButton.disable();
         }
     }
 
