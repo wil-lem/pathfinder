@@ -54,12 +54,10 @@ class Interactions {
         console.log(actionData);
         switch (actionData.action) {
             case 'passed':
-                console.log('passed');
                 lastAction.classList.add('fa');
                 lastAction.classList.add('fa-hand-paper');
                 break;
             case 'playcard':
-                console.log('played');
                 lastAction.classList.add('card');
                 lastAction.classList.add('card-color-' + actionData.card.color);
                 lastAction.innerHTML = actionData.card.number;
@@ -69,7 +67,6 @@ class Interactions {
 
                 break;
             default:
-                console.log(actionData.action);
                 break;
         }
     }
