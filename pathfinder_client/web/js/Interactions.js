@@ -51,7 +51,6 @@ class Interactions {
 
     static addLastAction(wrapper,actionData) {
         var lastAction = Interactions.createDiv({class: 'last-action'},wrapper);
-        console.log(actionData);
         switch (actionData.action) {
             case 'passed':
                 lastAction.classList.add('fa');
