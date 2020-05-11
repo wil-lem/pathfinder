@@ -149,8 +149,6 @@ class RoundState extends BaseState {
 
         this.resize();
 
-
-
     }
 
     clickCardOnTable(card) {
@@ -160,9 +158,16 @@ class RoundState extends BaseState {
 
     resize() {
 
-        var bbWindow = document.body.getBoundingClientRect();
+        // var bbWindow = this.wrapper.getBoundingClientRect();
         var bbHand = this.handArea.getElement().getBoundingClientRect();
-        var h = bbWindow.height - bbHand.height;
+
+        // console.log(bbWindow);
+        // console.log(bbHand);
+
+        var h = bbHand.top;
+
+        console.log(h);
+
         var bbPlay = this.playArea.getBoundingClientRect();
         var w = bbPlay.width;
 
