@@ -7,6 +7,9 @@ class Card {
 
         this.element = Interactions.createDiv({class:'card card-color-'+color+' card-number-'+number});
 
+        this.clickCallback = null;
+
+        this.messy = true;
 
         var numberElement = Interactions.createDiv({class:'card-number'});
         numberElement.textContent = number;
@@ -33,10 +36,13 @@ class Card {
 
         this.element.onclick = () => {
             this.element.style.transform
-            if(this.parent.clickCard !== undefined) {
+            if(this.parent && this.parent.clickCard !== undefined) {
                 this.parent.clickCard(this);
             }
-        }
+            if(this.clickCallback) {
+                this.clickCallback(this);
+            }
+        };
 
         this.offsetX = Math.random() - .5;
         this.offsetY = Math.random() - .5;
@@ -68,13 +74,29 @@ class Card {
         }
     }
 
+    setClickCallback(callback) {
+        this.clickCallback = callback;
+    }
+
+    toggleMessy() {
+        this.messy = (this.messy) ? false : true;
+    }
+
     updateCss(x,y,w,h) {
-        this.element.style.top = (x + this.offsetX * .1*w) + 'px';
-        // card.element.style.top = cardH + 'px';
-        this.element.style.left = (y + this.offsetY * .1*w) + 'px';
-        // if(this.distance === 0) {
-        // }
-        this.element.style.transform = 'rotate(' + this.rotate + 'deg)';
+
+        if(this.messy) {
+            this.element.style.top = (x + this.offsetX * .1*w) + 'px';
+            this.element.style.left = (y + this.offsetY * .1*w) + 'px';
+            this.element.style.transform = 'rotate(' + this.rotate + 'deg)';
+        } else {
+            this.element.style.top = x + 'px';
+            this.element.style.left = y + 'px';
+            if(this.distance === 0) {
+                this.element.style.transform = 'rotate(90deg)';
+            } else {
+                this.element.style.transform = 'rotate(0deg)';
+            }
+        }
     }
 
     setDistance(distance) {

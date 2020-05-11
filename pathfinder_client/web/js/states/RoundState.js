@@ -76,6 +76,7 @@ class RoundState extends BaseState {
 
 
     clickCard(card) {
+
         if(this.selectedCard == card) {
             this.selectedCard.deselect();
             this.selectedCard = null;
@@ -131,13 +132,17 @@ class RoundState extends BaseState {
             if(this.cards[i].color === color && this.cards[i].number === number) {
                 this.handArea.removeCard(this.cards[i]);
                 this.cards[i].remove();
+
                 break;
             }
         }
 
-        var card = new Card(number,color,parent);
+        var card = new Card(number,color);
         card.setStem(stem);
         card.setDistance(distance);
+        card.setClickCallback(card => {
+            this.clickCardOnTable(card);
+        });
 
         this.playArea.appendChild(card.getElement());
         this.tableCards.push(card);
@@ -146,6 +151,11 @@ class RoundState extends BaseState {
 
 
 
+    }
+
+    clickCardOnTable(card) {
+        card.toggleMessy();
+        this.resize();
     }
 
     resize() {
