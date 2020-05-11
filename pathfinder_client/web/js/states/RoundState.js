@@ -98,7 +98,7 @@ class RoundState extends BaseState {
             return;
         }
         this.parent.playCard({number:this.selectedCard.number,color:this.selectedCard.color});
-        this.selectedCard.deselect();
+        // this.selectedCard.deselect();
         this.playButton.disable();
     }
 
@@ -122,9 +122,9 @@ class RoundState extends BaseState {
     }
 
     moveCardToTable(color, number, stem, distance) {
-        if(this.selectedCard) {
-            this.selectedCard.deselect();
-        }
+        // if(this.selectedCard) {
+        //     this.selectedCard.deselect();
+        // }
         this.askCard.remove();
         this.passButton.disable();
 
@@ -158,16 +158,8 @@ class RoundState extends BaseState {
 
     resize() {
 
-        // var bbWindow = this.wrapper.getBoundingClientRect();
         var bbHand = this.handArea.getElement().getBoundingClientRect();
-
-        // console.log(bbWindow);
-        // console.log(bbHand);
-
         var h = bbHand.top;
-
-        console.log(h);
-
         var bbPlay = this.playArea.getBoundingClientRect();
         var w = bbPlay.width;
 
@@ -263,6 +255,9 @@ class RoundState extends BaseState {
         if(this.myTurn) {
             this.handArea.enable();
             this.passButton.enable();
+            if(this.selectedCard) {
+                this.playButton.enable();
+            }
         } else {
             this.handArea.disable();
             this.passButton.disable();
