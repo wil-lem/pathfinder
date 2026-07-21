@@ -1,10 +1,15 @@
-const Express = require("express")();
+const express = require("express");
+const Express = express();
 const Http = require("http").Server(Express);
+const path = require("path");
 const Socketio = require("socket.io")(Http,{ origins: '*:*'});
 
 
 const dotenv = require('dotenv');
 dotenv.config();
+
+// Serve static files from the frontend directory
+Express.use(express.static(path.join(__dirname, 'pathfinder_client/web')));
 
 var Person = require('./lib/Person');
 var Game = require('./lib/Game');
