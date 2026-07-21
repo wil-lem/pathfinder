@@ -2,7 +2,12 @@ const express = require("express");
 const Express = express();
 const Http = require("http").Server(Express);
 const path = require("path");
-const Socketio = require("socket.io")(Http,{ origins: '*:*'});
+const Socketio = require("socket.io")(Http, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+});
 
 
 const dotenv = require('dotenv');

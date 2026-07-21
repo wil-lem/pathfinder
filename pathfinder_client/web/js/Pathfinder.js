@@ -1,18 +1,8 @@
 class Pathfinder {
     constructor() {
-        var url = this.getBaseURL();
-        var parsed = this.parseURL(url);
-        var socketUrl = parsed.protocol + '//' + parsed.hostname + ':3000';
-
-        switch (parsed.hostname) {
-            case 'pathfinder.modusoft.nl':
-                socketUrl = 'https://pathfinder.api.modusoft.nl/'
-                break;
-            default:
-                break;
-        }
-        
-        this.socket = io(socketUrl);
+        // Connect to socket.io on the same origin
+        // The server will handle the connection regardless of port
+        this.socket = io();
 
         this.wrapper = document.createElement('div');
         this.wrapper.classList.add('game-wrapper');
