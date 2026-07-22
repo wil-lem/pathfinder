@@ -18,6 +18,11 @@ class RoundState extends BaseState {
     createHTML() {
         super.createHTML();
 
+        var languageSwitcher = document.querySelector('.game-language-switcher');
+        if(languageSwitcher) {
+            languageSwitcher.style.display = 'none';
+        }
+
         this.players = new GameRoundPlayers(this.wrapper);
 
         this.parent.players.subscribe(this.players);

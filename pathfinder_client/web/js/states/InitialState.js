@@ -1,5 +1,10 @@
 class InitialState extends BaseState {
     createHTML() {
+        var languageSwitcher = document.querySelector('.game-language-switcher');
+        if(languageSwitcher) {
+            languageSwitcher.style.display = 'inline-flex';
+        }
+
         this.center = new Modal(this.wrapper);
 
         this.token = undefined;

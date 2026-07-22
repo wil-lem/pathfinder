@@ -6,6 +6,11 @@ class InviteState extends BaseState {
     }
 
     createHTML() {
+        var languageSwitcher = document.querySelector('.game-language-switcher');
+        if(languageSwitcher) {
+            languageSwitcher.style.display = 'inline-flex';
+        }
+
         this.gameStart = null;
 
         this.center = new Modal(this.wrapper);
