@@ -19,7 +19,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       var params = new URLSearchParams(window.location.search);
       if (params.has('game')) {
-        window.location.replace('/game.html?' + params.toString());
+        window.location.replace('/game?' + params.toString());
       }
     }, false);
   </script>
@@ -28,7 +28,7 @@
   <main class="landing-shell">
     <header class="landing-nav">
       <div class="brand"><i class="fas fa-compass"></i> Pathfinder</div>
-      <a class="rules-link" href="/rules.html">How to play</a>
+      <a class="rules-link" href="/rules">How to play</a>
     </header>
 
     <section class="hero-card">
@@ -45,8 +45,8 @@
       </div>
 
       <div class="hero-actions">
-        <a class="hero-button primary" href="/game.html"><i class="fas fa-hiking"></i> Start Playing</a>
-        <a class="hero-button ghost" href="/rules.html"><i class="fas fa-book-open"></i> Read The Rules</a>
+        <a class="hero-button primary" href="/game"><i class="fas fa-hiking"></i> Start Playing</a>
+        <a class="hero-button ghost" href="/rules"><i class="fas fa-book-open"></i> Read The Rules</a>
       </div>
     </section>
   </main>

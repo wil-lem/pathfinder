@@ -16,6 +16,23 @@ dotenv.config();
 // Serve static files from the frontend directory
 Express.use(express.static(path.join(__dirname, 'pathfinder_client/web')));
 
+Express.get('/game', (req, res) => {
+    res.sendFile(path.join(__dirname, 'pathfinder_client/web/game.html'));
+});
+
+Express.get('/rules', (req, res) => {
+    res.sendFile(path.join(__dirname, 'pathfinder_client/web/rules.html'));
+});
+
+// Keep old URLs working while moving to clean routes.
+Express.get('/game.html', (req, res) => {
+    res.redirect(301, '/game' + (req.url.includes('?') ? req.url.substring(req.url.indexOf('?')) : ''));
+});
+
+Express.get('/rules.html', (req, res) => {
+    res.redirect(301, '/rules');
+});
+
 var Person = require('./lib/Person');
 var Game = require('./lib/Game');
 
