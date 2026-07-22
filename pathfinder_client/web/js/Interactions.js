@@ -105,12 +105,19 @@ class Interactions {
     static createCopyWidget(text,messageHandler) {
         var element = Interactions.createDiv({class: 'copy-widget'});
 
+        var t = function(key) {
+            if(window.PathfinderI18n) {
+                return window.PathfinderI18n.t(key);
+            }
+            return key;
+        }
+
         var input = Interactions.createInputText();
         input.readOnly = true;
         input.value = text;
         element.appendChild(input);
 
-        var copy = new Button('Copy',element);
+        var copy = new Button(t('game.copy'),element);
         copy.adFaIcon('copy').addClass('button-blue').addClass('button-small');
 
         copy.onClick(() => {
@@ -119,13 +126,13 @@ class Interactions {
             document.execCommand('copy');
             document.getSelection().removeAllRanges();
             if(messageHandler !== undefined) {
-                messageHandler.addMessage('Copied',1000);
+                messageHandler.addMessage(t('game.copied'),1000);
             }
         });
 
 
 
-        var whatsapp = new Button('Whatsapp',element);
+        var whatsapp = new Button(t('game.whatsapp'),element);
         whatsapp.setWaShare(text).addClass('button-blue').addClass('button-small');
 
 

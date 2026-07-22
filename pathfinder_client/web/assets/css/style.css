@@ -918,6 +918,37 @@
   padding: .4rem 0 .7rem;
 }
 
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(18, 86, 68, 0.2);
+  border-radius: 999px;
+  padding: .25rem .4rem .25rem .6rem;
+}
+
+.language-switcher label {
+  font-size: .8rem;
+  font-weight: 800;
+  color: #125644;
+}
+
+.language-switcher select {
+  border: 0;
+  border-radius: 999px;
+  padding: .35rem .55rem;
+  font-weight: 800;
+  background: #f5f5ec;
+  color: #1f2937;
+}
+
 .landing-nav .brand,
 .landing-nav .brand:visited {
   color: #125644;
@@ -1114,6 +1145,33 @@
   background: #f5f4ef;
 }
 
+.game-language-switcher {
+  position: fixed;
+  top: .7rem;
+  right: .7rem;
+  z-index: 2200;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .25rem .4rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.22);
+}
+
+.game-language-switcher label {
+  font-size: .75rem;
+  font-weight: 800;
+}
+
+.game-language-switcher select {
+  border: 0;
+  border-radius: 999px;
+  background: #ececec;
+  font-weight: 800;
+  padding: .35rem .45rem;
+}
+
 .rules-card {
   margin-top: 2rem;
 }
@@ -1155,6 +1213,12 @@
 @media (max-width: 640px) {
   .landing-shell {
     padding: .8rem;
+  }
+
+  .nav-controls {
+    width: 100%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
   }
 
   .hero-card {

@@ -16,7 +16,7 @@ class ChooseFirstCard {
 
 
         var text = Interactions.createDiv();
-        text.textContent = 'Choose the first card';
+        text.textContent = this.parent.parent.t('game.chooseFirstCard');
         this.firstCardModal.addToLeft(text);
 
         var chooseColor = Interactions.createDiv({class:'choose-color'});
@@ -34,7 +34,7 @@ class ChooseFirstCard {
         }
         this.firstCardModal.appendChild(chooseNumber);
 
-        this.confirmButton = new Button('Choose');
+        this.confirmButton = new Button(this.parent.parent.t('game.choose'));
         this.confirmButton.disable();
         this.confirmButton.adFaIcon('check');
 

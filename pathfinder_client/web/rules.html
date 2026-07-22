@@ -14,34 +14,53 @@
 
   <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="/assets/vendor/fontawesome/css/all.min.css">
+  <script src="/js/i18n.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.PathfinderI18n) {
+        window.PathfinderI18n.initLanguageSwitcher('.language-select');
+        window.PathfinderI18n.applyToDOM(document);
+        window.PathfinderI18n.subscribe(function() {
+          window.PathfinderI18n.applyToDOM(document);
+        });
+      }
+    }, false);
+  </script>
 </head>
 <body class="marketing-page rules-page">
   <main class="landing-shell">
     <header class="landing-nav">
       <a class="brand" href="/"><i class="fas fa-compass"></i> Pathfinder</a>
-      <a class="rules-link" href="/game">Start Playing</a>
+      <div class="nav-controls">
+        <a class="rules-link" href="/game" data-i18n="nav.startPlaying">Start Playing</a>
+        <div class="language-switcher">
+          <label for="language-select" data-i18n="language.label">Language</label>
+          <select id="language-select" class="language-select" aria-label="Language selector">
+            <option value="en">EN</option>
+            <option value="nl">NL</option>
+          </select>
+        </div>
+      </div>
     </header>
 
     <section class="hero-card rules-card">
-      <p class="hero-kicker">Rules</p>
-      <h1>How Pathfinder Works</h1>
+      <p class="hero-kicker" data-i18n="rules.kicker">Rules</p>
+      <h1 data-i18n="rules.title">How Pathfinder Works</h1>
 
       <ol class="rules-list">
-        <li>The game uses cards in five colors (1 to 10 for each color).</li>
-        <li>One player starts a round by choosing the first card: number 2 to 9.</li>
-        <li>That chosen card becomes the center card and is played first.</li>
-        <li>After that, turns rotate one by one among players.</li>
-        <li>On your turn, play a card that is legal for the table:
-          either a card with the same number as the center card, or the same color as an existing table card with a number directly above or below it.</li>
-        <li>If you truly have no legal move, you may pass your turn.</li>
-        <li>The round ends when one player has no cards left in hand.</li>
-        <li>Score is the total value of cards left in your hand; lower is better.
-          (Card 1 is worth 15 points.)</li>
+        <li data-i18n="rules.line1">The game uses cards in five colors (1 to 10 for each color).</li>
+        <li data-i18n="rules.line2">One player starts a round by choosing the first card: number 2 to 9.</li>
+        <li data-i18n="rules.line3">That chosen card becomes the center card and is played first.</li>
+        <li data-i18n="rules.line4">After that, turns rotate one by one among players.</li>
+        <li data-i18n="rules.line5">On your turn, play a card that is legal for the table: either a card with the same number as the center card, or the same color as an existing table card with a number directly above or below it.</li>
+        <li data-i18n="rules.line6">If you truly have no legal move, you may pass your turn.</li>
+        <li data-i18n="rules.line7">The round ends when one player has no cards left in hand.</li>
+        <li data-i18n="rules.line8">Score is the total value of cards left in your hand; lower is better. (Card 1 is worth 15 points.)</li>
       </ol>
 
       <div class="hero-actions">
-        <a class="hero-button" href="/game"><i class="fas fa-hiking"></i> Start Playing</a>
-        <a class="hero-button ghost" href="/"><i class="fas fa-home"></i> Back To Frontpage</a>
+        <a class="hero-button" href="/game"><i class="fas fa-hiking"></i> <span data-i18n="nav.startPlaying">Start Playing</span></a>
+        <a class="hero-button ghost" href="/"><i class="fas fa-home"></i> <span data-i18n="rules.backToFrontpage">Back To Frontpage</span></a>
       </div>
     </section>
   </main>

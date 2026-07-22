@@ -44,13 +44,13 @@ class RoundState extends BaseState {
         this.wrapper.appendChild(this.buttons);
 
 
-        this.passButton = new Button('Pass',this.buttons);
+        this.passButton = new Button(this.parent.t('game.pass'),this.buttons);
         this.passButton.addClass('pass-button').disable().onClick(()=>{
             this.passTurn();
         });
         this.passButton.adFaIcon('hand-paper');
 
-        this.playButton = new Button('Play',this.buttons);
+        this.playButton = new Button(this.parent.t('game.play'),this.buttons);
         this.playButton.addClass('play-button').disable().onClick(()=>{
            this.playCard();
         });

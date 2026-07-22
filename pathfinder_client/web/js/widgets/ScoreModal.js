@@ -7,7 +7,7 @@ class ScoreModal {
         this.hide();
 
         var text = Interactions.createDiv();
-        text.innerHTML = '<h2>Game done</h2>';
+    text.innerHTML = '<h2>' + this.t('game.gameDone') + '</h2>';
         this.modal.addToLeft(text);
 
         this.scoreWrapper = Interactions.createDiv({class:'score-result'});
@@ -16,13 +16,13 @@ class ScoreModal {
         this.messages = Interactions.createDiv({class:'messages'});
         this.modal.addToLeft(this.messages);
 
-        this.done = new Button('OK');
+        this.done = new Button(this.t('game.ok'));
 
         this.modal.addToLeft(this.done.getElement());
 
         this.done.onClick(() => {
            this.done.disable();
-           this.done.setText('Waiting');
+              this.done.setText(this.t('game.waiting'));
            this.parent.scoreDone();
         });
 
@@ -42,7 +42,7 @@ class ScoreModal {
 
     showScore(scoreData) {
         this.done.enable();
-        this.done.setText('Done');
+        this.done.setText(this.t('game.done'));
 
         this.clearScore();
         this.addScoreHeader();
@@ -51,10 +51,10 @@ class ScoreModal {
         scoreData.forEach(score => {
             this.addScoreLine(score);
             if(score.illegalPassCount === 1) {
-                messages.push( score.player + ' illegally passed once.')
+                messages.push(this.t('game.illegalOnce', {player: score.player}));
             }
             if(score.illegalPassCount > 1) {
-                messages.push( score.player + ' illegally passed ' + score.illegalPassCount + ' times.')
+                messages.push(this.t('game.illegalTimes', {player: score.player, count: score.illegalPassCount}));
             }
         });
 
@@ -85,16 +85,23 @@ class ScoreModal {
         this.scoreWrapper.append(line);
 
         var player = Interactions.createDiv({class:'player'});
-        player.textContent = 'Player';
+        player.textContent = this.t('game.player');
         line.append(player);
 
         var score = Interactions.createDiv({class:'score'});
-        score.textContent = 'Round';
+        score.textContent = this.t('game.round');
         line.append(score);
 
         var total = Interactions.createDiv({class:'total'});
-        total.textContent = 'Total';
+        total.textContent = this.t('game.total');
         line.append(total);
+    }
+
+    t(key, params) {
+        if(window.PathfinderI18n) {
+            return window.PathfinderI18n.t(key, params);
+        }
+        return key;
     }
 
     remove() {

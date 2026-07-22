@@ -77,6 +77,13 @@ class Pathfinder {
         return this.message;
     }
 
+    t(key, params) {
+        if(window.PathfinderI18n) {
+            return window.PathfinderI18n.t(key, params);
+        }
+        return key;
+    }
+
 
     startNewGame(data) {
         this.socket.emit('startNewGame',data);

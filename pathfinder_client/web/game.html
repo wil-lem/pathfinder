@@ -7,6 +7,7 @@
   <meta name="HandheldFriendly" content="true">
   <title>Pathfinder | Game</title>
 
+  <script src="/js/i18n.js"></script>
   <script src="/js/vendor/socket.io/socket.io.js"></script>
   <script src="/js/Pathfinder.js"></script>
   <script src="/js/Interactions.js"></script>
@@ -29,10 +30,30 @@
   <link rel="stylesheet" type="text/css" href="/assets/vendor/fontawesome/css/all.min.css">
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      var languageSelect = document.querySelector('.language-select');
+      if (window.PathfinderI18n) {
+        window.PathfinderI18n.initLanguageSwitcher('.language-select');
+        window.PathfinderI18n.applyToDOM(document);
+        window.PathfinderI18n.subscribe(function() {
+          window.PathfinderI18n.applyToDOM(document);
+        });
+      }
+      if (languageSelect) {
+        languageSelect.addEventListener('change', function() {
+          window.location.reload();
+        });
+      }
       new Pathfinder();
     }, false);
   </script>
 </head>
 <body>
+  <div class="game-language-switcher">
+    <label for="game-language-select" data-i18n="language.label">Language</label>
+    <select id="game-language-select" class="language-select" aria-label="Language selector">
+      <option value="en">EN</option>
+      <option value="nl">NL</option>
+    </select>
+  </div>
 </body>
 </html>

@@ -3,12 +3,12 @@ class InitialState extends BaseState {
         this.center = new Modal(this.wrapper);
 
         this.token = undefined;
-        this.inputName = Interactions.createInputText({placeholder: 'Your name'});
+        this.inputName = Interactions.createInputText({placeholder: this.parent.t('game.yourName')});
 
         this.center.addToLeft(this.inputName);
 
 
-        this.startGameButton = new Button('Start game',this.center);
+        this.startGameButton = new Button(this.parent.t('game.startGame'),this.center);
         this.startGameButton.adFaIcon('hiking');
 
 
@@ -21,7 +21,7 @@ class InitialState extends BaseState {
 
             var valid = true;
             if(data.nickname.length < 4) {
-                this.parent.getMessageHandler().errorMessage('Please enter a name of at least 4 characters.');
+                this.parent.getMessageHandler().errorMessage(this.parent.t('game.minNameError'));
                 valid = false;
             }
 
@@ -39,6 +39,6 @@ class InitialState extends BaseState {
 
     setGameToken(token) {
         this.token = token;
-        this.startGameButton.setText('Join game');
+        this.startGameButton.setText(this.parent.t('game.joinGame'));
     }
 }

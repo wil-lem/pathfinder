@@ -14,12 +14,12 @@ class InviteState extends BaseState {
 
 
         var name = Interactions.createDiv();
-        name.innerHTML = '<h2>Welcome ' + this.name + '</h2>Share this URL to invite others<br>';
+    name.innerHTML = '<h2>' + this.parent.t('game.welcomeShare', {name: this.name}) + '</h2><br>';
 
         this.center.addToLeft(name);
         this.center.addToLeft(token);
 
-        this.addCpu = new Button('Add CPU');
+        this.addCpu = new Button(this.parent.t('game.addCpu'));
         this.addCpu.addClass('buton-blue');
         this.addCpu.onClick(() => {
            this.addCpuPlayer();
@@ -28,7 +28,7 @@ class InviteState extends BaseState {
         this.center.addToRight(this.addCpu.getElement());
 
         var playersWrapper = Interactions.createDiv({class: 'players-wrapper fieldset'});
-        Interactions.addHeader(playersWrapper,'Players');
+        Interactions.addHeader(playersWrapper,this.parent.t('game.players'));
         this.playersUL = Interactions.createElement('ul',{class: 'player-list'});
         playersWrapper.appendChild(this.playersUL);
         this.parent.players.subscribe(this);
@@ -55,7 +55,7 @@ class InviteState extends BaseState {
 
     enableGameStart(data) {
         if(this.gameStart === null) {
-            this.gameStart = new Button('Start',this.center);
+            this.gameStart = new Button(this.parent.t('game.start'),this.center);
             this.gameStart.adFaIcon('hiking');
             this.gameStart.onClick(() => {
                 this.parent.startTheGame();
@@ -70,7 +70,7 @@ class InviteState extends BaseState {
 
         }
         this.addCpu.hide();
-        this.gameStart.innerHTML = 'Wating for <em>' + data.creator + '</em> to start the game.';
+        this.gameStart.innerHTML = this.parent.t('game.waitingForStart', {creator: data.creator});
     }
 
     remove() {

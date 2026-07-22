@@ -20,21 +20,40 @@
       var params = new URLSearchParams(window.location.search);
       if (params.has('game')) {
         window.location.replace('/game?' + params.toString());
+        return;
+      }
+
+      if (window.PathfinderI18n) {
+        window.PathfinderI18n.initLanguageSwitcher('.language-select');
+        window.PathfinderI18n.applyToDOM(document);
+        window.PathfinderI18n.subscribe(function() {
+          window.PathfinderI18n.applyToDOM(document);
+        });
       }
     }, false);
   </script>
+  <script src="/js/i18n.js"></script>
 </head>
 <body class="marketing-page">
   <main class="landing-shell">
     <header class="landing-nav">
       <div class="brand"><i class="fas fa-compass"></i> Pathfinder</div>
-      <a class="rules-link" href="/rules">How to play</a>
+      <div class="nav-controls">
+        <a class="rules-link" href="/rules" data-i18n="nav.howToPlay">How to play</a>
+        <div class="language-switcher">
+          <label for="language-select" data-i18n="language.label">Language</label>
+          <select id="language-select" class="language-select" aria-label="Language selector">
+            <option value="en">EN</option>
+            <option value="nl">NL</option>
+          </select>
+        </div>
+      </div>
     </header>
 
     <section class="hero-card">
-      <p class="hero-kicker">Card strategy game</p>
-      <h1>Find your path, outplay your friends.</h1>
-      <p class="hero-text">Start a game in seconds, invite players with one link, and race through tactical rounds where every card matters.</p>
+      <p class="hero-kicker" data-i18n="landing.kicker">Card strategy game</p>
+      <h1 data-i18n="landing.title">Find your path, outplay your friends.</h1>
+      <p class="hero-text" data-i18n="landing.subtitle">Start a game in seconds, invite players with one link, and race through tactical rounds where every card matters.</p>
 
       <div class="card-parade" aria-hidden="true">
         <div class="promo-card card-color-red"><span class="mini-number">7</span><i class="animal fa fa-dragon"></i><span class="mini-number bottom">7</span></div>
@@ -45,8 +64,8 @@
       </div>
 
       <div class="hero-actions">
-        <a class="hero-button primary" href="/game"><i class="fas fa-hiking"></i> Start Playing</a>
-        <a class="hero-button ghost" href="/rules"><i class="fas fa-book-open"></i> Read The Rules</a>
+        <a class="hero-button primary" href="/game"><i class="fas fa-hiking"></i> <span data-i18n="nav.startPlaying">Start Playing</span></a>
+        <a class="hero-button ghost" href="/rules"><i class="fas fa-book-open"></i> <span data-i18n="landing.readRules">Read The Rules</span></a>
       </div>
     </section>
   </main>

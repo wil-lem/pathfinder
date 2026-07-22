@@ -4,7 +4,11 @@ class NotifyFirstCard {
         this.modal.addClass('notify-first-card');
 
         var text = Interactions.createDiv();
-        text.innerHTML = '<em>' + userName + '</em> asked for the ' + color + ' ' + number;
+        if(window.PathfinderI18n) {
+            text.innerHTML = window.PathfinderI18n.t('game.askedForCard', {user: userName, color: color, number: number});
+        } else {
+            text.innerHTML = '<em>' + userName + '</em> asked for the ' + color + ' ' + number;
+        }
         this.modal.addToLeft(text);
 
         var card = new Card(number,color);
