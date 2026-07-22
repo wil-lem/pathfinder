@@ -884,7 +884,7 @@
 /* line 286, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result .score-line .player .icon {
   float: left;
-  margin: 1px 5px 0px 5px;
+  margin: 5px 5px 0px 5px;
 }
 /* line 291, ../../../sass/style.scss */
 .game-wrapper .show-score .score-result .score-line .score, .game-wrapper .show-score .score-result .score-line .total {
@@ -1363,7 +1363,7 @@
 }
 
 .game-wrapper .player {
-  padding: .45rem .45rem .45rem 1.4rem;
+  padding: 0.45rem 2.45rem 0.45rem 2.1rem;
   border-radius: .75rem;
   background: rgba(242, 236, 224, 0.72);
 }
