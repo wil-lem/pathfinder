@@ -1257,3 +1257,268 @@
     width: 100%;
   }
 }
+
+.game-wrapper {
+  font-family: "Nunito", "Trebuchet MS", sans-serif;
+  color: #16352e;
+  background: linear-gradient(180deg, #f2ead8 0%, #f8f3e8 100%);
+}
+
+.game-wrapper:before {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(223, 95, 52, 0.12) 0 90px, transparent 92px),
+    radial-gradient(circle at 80% 12%, rgba(18, 86, 68, 0.14) 0 120px, transparent 124px),
+    url(../images/path.jpg) no-repeat;
+  background-size: cover;
+  opacity: .48;
+  filter: blur(6px);
+  -webkit-filter: blur(6px);
+}
+
+.game-wrapper .state-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.game-wrapper .play-area-wrapper {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.game-wrapper .play-area {
+  border-radius: 1.25rem;
+  margin: 1rem;
+  background: rgba(255, 251, 242, 0.38);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.game-wrapper .card {
+  width: 90px;
+  height: 140px;
+  padding: 6px;
+  background: linear-gradient(180deg, #fffdfa 0%, #fff7ec 100%);
+  border: 0;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(37, 32, 18, 0.18);
+}
+
+.game-wrapper .card:hover {
+  border-width: 0;
+  transform: translateY(-2px);
+}
+
+.game-wrapper .card.selected {
+  margin-top: -14px;
+  box-shadow: 0 14px 24px rgba(37, 32, 18, 0.26);
+}
+
+.game-wrapper .card .card-number {
+  font-size: 1.2em;
+}
+
+.game-wrapper .card .animal {
+  font-size: 3.1em;
+}
+
+.game-wrapper .player-wrapper {
+  top: 1rem;
+  right: 1rem;
+  border: 0;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.84);
+  padding: .85rem;
+  box-shadow: 0 12px 30px rgba(39, 46, 37, 0.16);
+  backdrop-filter: blur(3px);
+}
+
+.game-wrapper .player-wrapper h2 {
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #6e6357;
+  margin-bottom: .5rem;
+}
+
+.game-wrapper .player-wrapper ul {
+  padding: 0;
+  gap: .35rem;
+}
+
+.game-wrapper .player-wrapper ul li {
+  width: 100%;
+}
+
+.game-wrapper .player {
+  padding: .45rem .45rem .45rem 1.4rem;
+  border-radius: .75rem;
+  background: rgba(242, 236, 224, 0.72);
+}
+
+.game-wrapper .player .fa {
+  left: .45rem;
+  top: .55rem;
+}
+
+.game-wrapper .game-players-wrapper .game-players {
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.game-wrapper .game-players-wrapper .game-players .fa-users {
+  background: #176a54;
+  border-color: #176a54;
+  color: #fff;
+}
+
+.game-wrapper .hand-area {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.12));
+  backdrop-filter: blur(2px);
+}
+
+.game-wrapper .hand-area .card-slider {
+  padding: 0 24px 0;
+}
+
+.hand-buttons {
+  width: auto;
+  height: auto;
+}
+
+.hand-buttons .button,
+.game-wrapper .play-area-wrapper .choose-first-card .confirm-button,
+.center-block-wrapper div.button,
+.center-block-wrapper a.button {
+  border: 0;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(24, 44, 34, 0.16);
+  background-color: #176a54;
+  color: #fff;
+}
+
+.hand-buttons .button:hover,
+.hand-buttons .button:focus,
+.game-wrapper .play-area-wrapper .choose-first-card .confirm-button:hover,
+.game-wrapper .play-area-wrapper .choose-first-card .confirm-button:focus,
+.center-block-wrapper div.button:hover,
+.center-block-wrapper div.button:focus,
+.center-block-wrapper a.button:hover,
+.center-block-wrapper a.button:focus {
+  background-color: #0f5945;
+}
+
+.hand-buttons .button.play-button,
+.game-wrapper .play-area-wrapper .choose-first-card .confirm-button.button-blue,
+.center-block-wrapper div.button.button-blue,
+.center-block-wrapper a.button.button-blue {
+  background-color: #e96e3e;
+}
+
+.hand-buttons .button.play-button:hover,
+.game-wrapper .play-area-wrapper .choose-first-card .confirm-button.button-blue:hover,
+.game-wrapper .play-area-wrapper .choose-first-card .confirm-button.button-blue:focus,
+.center-block-wrapper div.button.button-blue:hover,
+.center-block-wrapper div.button.button-blue:focus,
+.center-block-wrapper a.button.button-blue:hover,
+.center-block-wrapper a.button.button-blue:focus {
+  background-color: #d85d2c;
+}
+
+.hand-buttons .button.pass-button,
+.center-block-wrapper div.button.button-red,
+.center-block-wrapper a.button.button-red {
+  background-color: #b84444;
+}
+
+.hand-buttons .button.pass-button:hover,
+.center-block-wrapper div.button.button-red:hover,
+.center-block-wrapper div.button.button-red:focus,
+.center-block-wrapper a.button.button-red:hover,
+.center-block-wrapper a.button.button-red:focus {
+  background-color: #9f3434;
+}
+
+.hand-buttons .button.disabled,
+.game-wrapper .play-area-wrapper .choose-first-card .confirm-button.disabled,
+.center-block-wrapper div.button.disabled,
+.center-block-wrapper a.button.disabled {
+  background: #cfc8be;
+  color: #7f766b;
+  box-shadow: none;
+}
+
+.center-block-wrapper {
+  padding: 0 1rem;
+}
+
+.center-block-wrapper .center-block {
+  border: 0;
+  border-radius: 1.25rem;
+  max-width: 460px;
+  background: rgba(255, 252, 246, 0.96);
+  box-shadow: 0 18px 36px rgba(29, 44, 35, 0.22);
+}
+
+.center-block-wrapper input[type=text] {
+  border: 1px solid rgba(18, 86, 68, 0.18);
+  border-radius: .9rem;
+  background: #fffdf8;
+  padding: .75rem .9rem;
+  font-size: 1.2rem;
+}
+
+.center-block-wrapper .copy-widget {
+  gap: .5rem;
+}
+
+.center-block-wrapper .copy-widget .button {
+  width: calc(50% - .25rem);
+  font-size: .98rem;
+}
+
+.center-block-wrapper .choose-first-card .choose-color .color-button,
+.center-block-wrapper .choose-first-card .choose-number .number-button {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.game-wrapper .show-score .score-result {
+  width: min(340px, 100%);
+}
+
+.game-wrapper .show-score .score-result .score-line {
+  align-items: center;
+  padding: .3rem 0;
+}
+
+.game-wrapper .show-score .messages {
+  margin-top: .75rem;
+  color: #8b4d28;
+}
+
+@media (max-width: 640px) {
+  .game-wrapper .player-wrapper {
+    top: .6rem;
+    right: .6rem;
+    left: .6rem;
+    padding: .65rem;
+  }
+
+  .game-wrapper .play-area {
+    margin: .6rem;
+    border-radius: 1rem;
+  }
+
+  .game-wrapper .card {
+    width: 78px;
+    height: 122px;
+    border-radius: 14px;
+  }
+
+  .hand-buttons .button {
+    width: 132px;
+    font-size: 1.2em;
+  }
+
+  .center-block-wrapper .center-block {
+    max-width: 100%;
+  }
+}
