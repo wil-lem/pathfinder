@@ -11,6 +11,13 @@ class Pathfinder {
 
         this.message = new Messages(this);
         this.players = new Players(this);
+        this.players.subscribe(this);
+
+        this.trackingPlayersInitialized = false;
+        this.trackedPlayerIds = [];
+        this.latestPlayers = [];
+        this.gameStartedTracked = false;
+        this.roundCounter = 0;
 
 
         this.state = new InitialState(this.stateWrapper,this);
@@ -44,6 +51,13 @@ class Pathfinder {
         });
 
         this.socket.on('dealCards', data => {
+            if(!this.gameStartedTracked) {
+                this.gameStartedTracked = true;
+                var mode = this.getGameMode();
+                this.trackEvent('Game', 'Started', mode, this.latestPlayers.length);
+                this.trackEvent('Game', 'Mode', mode);
+            }
+
             this.state = new RoundState(this.stateWrapper,this);
             this.state.setData(data);
             this.state.createHTML();
@@ -68,6 +82,8 @@ class Pathfinder {
         });
 
         this.socket.on('showScore', data => {
+            this.roundCounter++;
+            this.trackEvent('Round', 'Finished', this.getGameMode(), this.roundCounter);
             this.state.showScore(data);
         });
 
@@ -75,6 +91,48 @@ class Pathfinder {
 
     getMessageHandler() {
         return this.message;
+    }
+
+    updatePlayerList(list) {
+        this.latestPlayers = list;
+
+        if(!this.trackingPlayersInitialized) {
+            this.trackingPlayersInitialized = true;
+            this.trackedPlayerIds = list.map(player => player.id);
+            return;
+        }
+
+        var knownPlayers = this.trackedPlayerIds.slice(0);
+        list.forEach(player => {
+            if(knownPlayers.indexOf(player.id) < 0) {
+                var type = (player.isCpu) ? 'cpu' : 'human';
+                this.trackEvent('Game Lobby', 'Player Added', type);
+                this.trackedPlayerIds.push(player.id);
+            }
+        });
+    }
+
+    getGameMode() {
+        if(!this.latestPlayers || this.latestPlayers.length === 0) {
+            return 'unknown';
+        }
+        var hasCpu = this.latestPlayers.some(player => player.isCpu);
+        return hasCpu ? 'vs_cpu' : 'multiplayer';
+    }
+
+    trackEvent(category, action, name, value) {
+        if(!window._paq) {
+            return;
+        }
+
+        var event = [category, action];
+        if(name !== undefined) {
+            event.push(name);
+        }
+        if(value !== undefined) {
+            event.push(value);
+        }
+        window._paq.push(['trackEvent'].concat(event));
     }
 
     t(key, params) {

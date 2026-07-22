@@ -55,6 +55,9 @@ class InviteState extends BaseState {
     }
 
     addCpuPlayer() {
+        if(this.parent.trackEvent) {
+            this.parent.trackEvent('Game Lobby', 'Add CPU Clicked', 'manual');
+        }
         this.parent.addCpuPlayer();
     }
 
