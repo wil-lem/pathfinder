@@ -37,6 +37,6 @@ class Modal {
     }
 
     show() {
-        this.wrapper.style.display = 'block';
+        this.wrapper.style.display = 'flex';
     }
 }
