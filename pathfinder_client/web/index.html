@@ -1,44 +1,45 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
-
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="HandheldFriendly" content="true">
+  <meta name="description" content="Play Pathfinder online with friends and family.">
+  <title>Pathfinder | Frontpage</title>
 
-
-  <script src="/js/vendor/socket.io/socket.io.js"></script>
-  <script src="/js/Pathfinder.js"></script>
-  <script src="/js/Interactions.js"></script>
-  <script src="/js/states/BaseState.js"></script>
-  <script src="/js/states/InitialState.js"></script>
-  <script src="/js/states/InviteState.js"></script>
-  <script src="/js/states/RoundState.js"></script>
-  <script src="/js/widgets/Messages.js"></script>
-  <script src="/js/widgets/Players.js"></script>
-  <script src="/js/widgets/Card.js"></script>
-  <script src="/js/widgets/ChooseFirstCard.js"></script>
-  <script src="/js/widgets/NotifyFirstCard.js"></script>
-  <script src="/js/widgets/Button.js"></script>
-  <script src="/js/widgets/Modal.js"></script>
-  <script src="/js/widgets/ScoreModal.js"></script>
-  <script src="/js/widgets/GameRoundPlayers.js"></script>
-  <script src="/js/widgets/Hand.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;900&family=Righteous&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="/assets/vendor/fontawesome/css/all.min.css">
+
   <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      console.log('ready');
-      var pathf = new Pathfinder();
+    document.addEventListener('DOMContentLoaded', function() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.has('game')) {
+        window.location.replace('/game.html?' + params.toString());
+      }
     }, false);
-
-
   </script>
-
-
 </head>
-<body>
+<body class="marketing-page">
+  <main class="landing-shell">
+    <header class="landing-nav">
+      <div class="brand"><i class="fas fa-compass"></i> Pathfinder</div>
+      <a class="rules-link" href="/rules.html">How to play</a>
+    </header>
 
+    <section class="hero-card">
+      <p class="hero-kicker">Card strategy game</p>
+      <h1>Find your path, outplay your friends.</h1>
+      <p class="hero-text">Start a game in seconds, invite players with one link, and race through tactical rounds where every card matters.</p>
+      <div class="hero-actions">
+        <a class="hero-button" href="/game.html"><i class="fas fa-hiking"></i> Start Playing</a>
+        <a class="hero-button ghost" href="/rules.html"><i class="fas fa-book-open"></i> Read The Rules</a>
+      </div>
+    </section>
+  </main>
 </body>
 </html>

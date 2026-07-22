@@ -10,7 +10,7 @@ class InviteState extends BaseState {
 
         this.center = new Modal(this.wrapper);
 
-        var token = Interactions.createCopyWidget(this.parent.getBaseURL() + '/?game=' + this.token,this.parent.getMessageHandler());
+        var token = Interactions.createCopyWidget(this.parent.getBaseURL() + '/game.html?game=' + this.token,this.parent.getMessageHandler());
 
 
         var name = Interactions.createDiv();
